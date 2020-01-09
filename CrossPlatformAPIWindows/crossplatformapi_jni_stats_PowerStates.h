@@ -13,7 +13,7 @@ extern "C" {
  * Signature: ()V
  */
 JNIEXPORT void JNICALL Java_crossplatformapi_jni_stats_PowerStates_modernStandby
-  (JNIEnv *, jobject);
+  (JNIEnv *, jclass);
 
 /*
  * Class:     crossplatformapi_jni_stats_PowerStates
@@ -21,7 +21,7 @@ JNIEXPORT void JNICALL Java_crossplatformapi_jni_stats_PowerStates_modernStandby
  * Signature: ()V
  */
 JNIEXPORT void JNICALL Java_crossplatformapi_jni_stats_PowerStates_standby
-  (JNIEnv *, jobject);
+  (JNIEnv *, jclass);
 
 /*
  * Class:     crossplatformapi_jni_stats_PowerStates
@@ -29,7 +29,7 @@ JNIEXPORT void JNICALL Java_crossplatformapi_jni_stats_PowerStates_standby
  * Signature: ()V
  */
 JNIEXPORT void JNICALL Java_crossplatformapi_jni_stats_PowerStates_hibernate
-  (JNIEnv *, jobject);
+  (JNIEnv *, jclass);
 
 /*
  * Class:     crossplatformapi_jni_stats_PowerStates
@@ -37,7 +37,23 @@ JNIEXPORT void JNICALL Java_crossplatformapi_jni_stats_PowerStates_hibernate
  * Signature: ()V
  */
 JNIEXPORT void JNICALL Java_crossplatformapi_jni_stats_PowerStates_shutdown
-  (JNIEnv *, jobject);
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     crossplatformapi_jni_stats_PowerStates
+ * Method:    reboot
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_stats_PowerStates_reboot
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     crossplatformapi_jni_stats_PowerStates
+ * Method:    logoff
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_stats_PowerStates_logoff
+  (JNIEnv *, jclass);
 
 #ifdef __cplusplus
 }
