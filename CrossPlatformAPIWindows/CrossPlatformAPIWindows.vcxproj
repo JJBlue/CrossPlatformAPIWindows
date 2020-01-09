@@ -90,6 +90,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;CROSSPLATFORMAPIWINDOWS_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>C:\Program Files\AdoptOpenJDK\jdk-13.0.1.9-hotspot\include\win32;C:\Program Files\AdoptOpenJDK\jdk-13.0.1.9-hotspot\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
