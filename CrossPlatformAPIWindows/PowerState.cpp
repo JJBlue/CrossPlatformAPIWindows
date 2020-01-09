@@ -5,6 +5,7 @@
 #include <powrprof.h>
 #include <stdio.h> 
 #include <stdlib.h> 
+#include <WinUser.h>
 
 #pragma comment(lib, "PowrProf.lib")
 
@@ -30,4 +31,8 @@ JNIEXPORT void JNICALL Java_crossplatformapi_jni_stats_PowerStates_reboot(JNIEnv
 
 JNIEXPORT void JNICALL Java_crossplatformapi_jni_stats_PowerStates_logoff(JNIEnv*, jclass) {
 	system("shutdown /l");
+}
+
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_stats_PowerStates_lockScreen(JNIEnv*, jclass) {
+	LockWorkStation();
 }

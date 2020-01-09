@@ -24,10 +24,10 @@
     <ClInclude Include="crossplatformapi_jni_stats_PowerStates.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="crossplatformapi_jni_users_User.h">
+    <ClInclude Include="crossplatformapi_jni_keyboard_NativeKeyboard.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="crossplatformapi_jni_keyboard_NativeKeyboard.h">
+    <ClInclude Include="crossplatformapi_jni_keyboard_KeyboardListener.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
@@ -39,6 +39,12 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="PowerState.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="keyboard.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="keyboardListener.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

@@ -55,6 +55,14 @@ JNIEXPORT void JNICALL Java_crossplatformapi_jni_stats_PowerStates_reboot
 JNIEXPORT void JNICALL Java_crossplatformapi_jni_stats_PowerStates_logoff
   (JNIEnv *, jclass);
 
+/*
+ * Class:     crossplatformapi_jni_stats_PowerStates
+ * Method:    lockScreen
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_stats_PowerStates_lockScreen
+  (JNIEnv *, jclass);
+
 #ifdef __cplusplus
 }
 #endif

@@ -155,14 +155,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="crossplatformapi_jni_keyboard_KeyboardListener.h" />
     <ClInclude Include="crossplatformapi_jni_keyboard_NativeKeyboard.h" />
     <ClInclude Include="crossplatformapi_jni_stats_PowerStates.h" />
-    <ClInclude Include="crossplatformapi_jni_users_User.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="keyboard.cpp" />
+    <ClCompile Include="keyboardListener.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

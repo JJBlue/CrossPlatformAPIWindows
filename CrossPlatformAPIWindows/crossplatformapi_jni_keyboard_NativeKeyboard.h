@@ -33,22 +33,6 @@ JNIEXPORT jshort JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_getKe
 
 /*
  * Class:     crossplatformapi_jni_keyboard_NativeKeyboard
- * Method:    startHooking
- * Signature: ()V
- */
-JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_startHooking
-  (JNIEnv *, jobject);
-
-/*
- * Class:     crossplatformapi_jni_keyboard_NativeKeyboard
- * Method:    stopHooking
- * Signature: ()V
- */
-JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_stopHooking
-  (JNIEnv *, jobject);
-
-/*
- * Class:     crossplatformapi_jni_keyboard_NativeKeyboard
  * Method:    pressKey
  * Signature: (I)V
  */
