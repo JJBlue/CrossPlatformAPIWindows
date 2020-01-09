@@ -31,7 +31,7 @@ DWORD WINAPI hotkeyThread(LPVOID lpParm){
 	return 0;
 }
 
-JNIEXPORT void JNICALL Java_components_dll_keys_CHeader_startHooking(JNIEnv* env, jobject c) {
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_KeyboardListener_registerListener(JNIEnv* env, jobject c) {
 	hooking = true;
 
 	envi = env;
@@ -44,7 +44,7 @@ JNIEXPORT void JNICALL Java_components_dll_keys_CHeader_startHooking(JNIEnv* env
 	hThread = CreateThread(NULL, NULL, (LPTHREAD_START_ROUTINE) hotkeyThread, NULL, NULL, &dwThread);
 }
 
-JNIEXPORT void JNICALL Java_components_dll_keys_CHeader_stopHooking(JNIEnv* env, jobject c) {
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_KeyboardListener_unregisterListener(JNIEnv* env, jobject c) {
 	hooking = false;
 
 	if (hThread != NULL) {

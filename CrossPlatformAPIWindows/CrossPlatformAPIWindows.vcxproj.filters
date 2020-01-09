@@ -30,6 +30,9 @@
     <ClInclude Include="crossplatformapi_jni_keyboard_KeyboardListener.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="crossplatformapi_jni_mouse_MouseListener.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -45,6 +48,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="keyboardListener.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="mouseListener.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
