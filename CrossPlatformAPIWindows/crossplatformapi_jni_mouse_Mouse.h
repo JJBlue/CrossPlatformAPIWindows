@@ -10,26 +10,26 @@ extern "C" {
 /*
  * Class:     crossplatformapi_jni_mouse_Mouse
  * Method:    press
- * Signature: ()V
+ * Signature: (I)V
  */
 JNIEXPORT void JNICALL Java_crossplatformapi_jni_mouse_Mouse_press
-  (JNIEnv *, jclass);
+  (JNIEnv *, jclass, jint);
 
 /*
  * Class:     crossplatformapi_jni_mouse_Mouse
  * Method:    release
- * Signature: ()V
+ * Signature: (I)V
  */
 JNIEXPORT void JNICALL Java_crossplatformapi_jni_mouse_Mouse_release
-  (JNIEnv *, jclass);
+  (JNIEnv *, jclass, jint);
 
 /*
  * Class:     crossplatformapi_jni_mouse_Mouse
  * Method:    click
- * Signature: ()V
+ * Signature: (I)V
  */
 JNIEXPORT void JNICALL Java_crossplatformapi_jni_mouse_Mouse_click
-  (JNIEnv *, jclass);
+  (JNIEnv *, jclass, jint);
 
 /*
  * Class:     crossplatformapi_jni_mouse_Mouse

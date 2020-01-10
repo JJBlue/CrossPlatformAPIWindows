@@ -30,12 +30,12 @@ LRESULT CALLBACK mouseHookProc(int nCode, WPARAM wParam, LPARAM lParam) {
             break;
         case WM_XBUTTONDOWN: {
             int xbutton = GET_XBUTTON_WPARAM(wParam);
-            envi->CallStaticVoidMethod(clazz, m_press, xbutton + 1);
+            envi->CallStaticVoidMethod(clazz, m_press, xbutton + 2);
             break;
         }
         case WM_XBUTTONUP: {
             int xbutton = GET_XBUTTON_WPARAM(wParam);
-            envi->CallStaticVoidMethod(clazz, m_release, xbutton + 1);
+            envi->CallStaticVoidMethod(clazz, m_release, xbutton + 2);
             break;
         }
         case WM_MOUSEMOVE:
