@@ -15,7 +15,6 @@ static jmethodID m_move, m_scroll, m_press, m_release;
 
 LRESULT CALLBACK mouseHookProc(int nCode, WPARAM wParam, LPARAM lParam) {
     //PMSLLHOOKSTRUCT info = (PMSLLHOOKSTRUCT)lParam;
-
     switch (wParam) {
         case WM_LBUTTONDOWN:
             envi->CallStaticVoidMethod(clazz, m_press, 0);
@@ -27,8 +26,18 @@ LRESULT CALLBACK mouseHookProc(int nCode, WPARAM wParam, LPARAM lParam) {
             envi->CallStaticVoidMethod(clazz, m_press, 1);
             break;
         case WM_RBUTTONUP:
-            envi->CallStaticVoidMethod(clazz, m_release, 0);
+            envi->CallStaticVoidMethod(clazz, m_release, 1);
             break;
+        case WM_XBUTTONDOWN: {
+            int xbutton = GET_XBUTTON_WPARAM(wParam);
+            envi->CallStaticVoidMethod(clazz, m_press, xbutton + 1);
+            break;
+        }
+        case WM_XBUTTONUP: {
+            int xbutton = GET_XBUTTON_WPARAM(wParam);
+            envi->CallStaticVoidMethod(clazz, m_release, xbutton + 1);
+            break;
+        }
         case WM_MOUSEMOVE:
             envi->CallStaticVoidMethod(clazz, m_move, (long)GET_X_LPARAM(lParam), (long)GET_Y_LPARAM(lParam));
             break;

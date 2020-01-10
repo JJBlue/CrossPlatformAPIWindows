@@ -10,7 +10,7 @@ void press(int key) {
 	ip.ki.dwExtraInfo = 0;
 
 	ip.ki.wVk = key;
-	ip.ki.dwFlags = 0; // 0 for key press
+	ip.ki.dwFlags = 0; //keydown
 	SendInput(1, &ip, sizeof(INPUT));
 }
 
@@ -22,7 +22,7 @@ void release(int key) {
 	ip.ki.dwExtraInfo = 0;
 
 	ip.ki.wVk = key;
-	ip.ki.dwFlags = KEYEVENTF_KEYUP; // KEYEVENTF_KEYUP for key release
+	ip.ki.dwFlags = KEYEVENTF_KEYUP;
 	SendInput(1, &ip, sizeof(INPUT));
 }
 

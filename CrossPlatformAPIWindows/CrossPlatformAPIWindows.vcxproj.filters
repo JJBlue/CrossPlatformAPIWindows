@@ -36,6 +36,9 @@
     <ClInclude Include="crossplatformapi_jni_network_Network.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="crossplatformapi_jni_mouse_Mouse.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -57,6 +60,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Network.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="mouse.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

@@ -157,6 +157,7 @@
   <ItemGroup>
     <ClInclude Include="crossplatformapi_jni_keyboard_KeyboardListener.h" />
     <ClInclude Include="crossplatformapi_jni_keyboard_NativeKeyboard.h" />
+    <ClInclude Include="crossplatformapi_jni_mouse_Mouse.h" />
     <ClInclude Include="crossplatformapi_jni_mouse_MouseListener.h" />
     <ClInclude Include="crossplatformapi_jni_network_Network.h" />
     <ClInclude Include="crossplatformapi_jni_stats_PowerStates.h" />
@@ -167,6 +168,7 @@
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="keyboard.cpp" />
     <ClCompile Include="keyboardListener.cpp" />
+    <ClCompile Include="mouse.cpp" />
     <ClCompile Include="mouseListener.cpp" />
     <ClCompile Include="Network.cpp" />
     <ClCompile Include="pch.cpp">
