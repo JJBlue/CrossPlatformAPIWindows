@@ -9,19 +9,19 @@
 
 #pragma comment(lib, "PowrProf.lib")
 
-JNIEXPORT void JNICALL Java_crossplatformapi_jni_stats_PowerStates_modernStandby(JNIEnv*, jobject) {
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_stats_PowerStates_modernStandby(JNIEnv*, jclass) {
 	
 }
 
-JNIEXPORT void JNICALL Java_crossplatformapi_jni_stats_PowerStates_standby(JNIEnv*, jobject) {
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_stats_PowerStates_standby(JNIEnv*, jclass) {
 	SetSuspendState(0, 1, 0);
 }
 
-JNIEXPORT void JNICALL Java_crossplatformapi_jni_stats_PowerStates_hibernate(JNIEnv*, jobject) {
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_stats_PowerStates_hibernate(JNIEnv*, jclass) {
 	SetSuspendState(1, 1, 0);
 }
 
-JNIEXPORT void JNICALL Java_crossplatformapi_jni_stats_PowerStates_shutdown(JNIEnv*, jobject) {
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_stats_PowerStates_shutdown(JNIEnv*, jclass) {
 	system("shutdown /s");
 }
 
