@@ -4,9 +4,8 @@
 
 #include <windowsx.h>
 
-#include <iostream> //Ein und Ausgabe
-
 static bool hooking = false;
+static bool block = false;
 static HHOOK mouseHook;
 
 static JNIEnv* envi;
@@ -47,7 +46,8 @@ LRESULT CALLBACK mouseHookProc(int nCode, WPARAM wParam, LPARAM lParam) {
         case WM_MOUSEHWHEEL:
             break;
     }
-    return CallNextHookEx(NULL, nCode, wParam, lParam);
+    auto value = CallNextHookEx(NULL, nCode, wParam, lParam);
+    return block ? 1 : value;
 }
 
 JNIEXPORT void JNICALL Java_crossplatformapi_jni_mouse_MouseListener_registerListener(JNIEnv* env, jclass) {
@@ -74,4 +74,12 @@ JNIEXPORT void JNICALL Java_crossplatformapi_jni_mouse_MouseListener_registerLis
 
 JNIEXPORT void JNICALL Java_crossplatformapi_jni_mouse_MouseListener_unregisterListener(JNIEnv*, jclass) {
     hooking = false;
+}
+
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_mouse_MouseListener_block(JNIEnv*, jclass) {
+    block = true;
+}
+
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_mouse_MouseListener_unblock(JNIEnv*, jclass) {
+    block = false;
 }

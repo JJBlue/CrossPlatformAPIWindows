@@ -27,7 +27,7 @@ void release(int key) {
 }
 
 JNIEXPORT jboolean JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_registerHotKey(JNIEnv*, jclass, jint id, jint modifires, jint key) {
-	return RegisterHotKey(NULL, id, modifires, key);
+	return (bool) RegisterHotKey(NULL, id, modifires, key);
 }
 
 JNIEXPORT jboolean JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_unregisterHotKey(JNIEnv*, jclass, jint id) {

@@ -2,8 +2,6 @@
 
 #include "crossplatformapi_jni_keyboard_KeyboardListener.h"
 
-#include <iostream> //Ein und Ausgabe
-
 static bool hooking = false;
 static bool block = false;
 static HHOOK keyboardHook;
@@ -11,11 +9,20 @@ static HHOOK keyboardHook;
 static JNIEnv* envi;
 static jclass clazz;
 
-static jmethodID m_hookKey, m_hotKey;
+static jmethodID m_press, m_release, m_pressHotKey, m_releaseHotkey;
 
 LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam) {
 	PKBDLLHOOKSTRUCT key = (PKBDLLHOOKSTRUCT) lParam;
-	envi->CallStaticVoidMethod(clazz, m_hookKey, (int)wParam, (int)key->vkCode, (int)key->flags);
+
+	switch (wParam) { //TODO test if WM_* is right syntax
+		case WM_KEYDOWN:
+			envi->CallStaticVoidMethod(clazz, m_press, (long)key->vkCode, false, false, false, false); //TODO flags (int)key->flags
+			break;
+		case WM_KEYUP:
+			envi->CallStaticVoidMethod(clazz, m_release, (long)key->vkCode, false, false, false, false); //TODO flags
+			break;
+	}
+
 	auto value = CallNextHookEx(keyboardHook, nCode, wParam, lParam);
 	return block ? 1 : value;
 }
@@ -23,16 +30,19 @@ LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam) {
 JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_KeyboardListener_registerListener(JNIEnv* env, jclass) {
 	envi = env;
 	clazz = envi->FindClass("crossplatformapi/main/keyboard/KeyEventReceiver");
-	m_hookKey = envi->GetStaticMethodID(clazz, "hookedKey", "(III)V"); //Ljava/lang/Integer
-	m_hotKey = envi->GetStaticMethodID(clazz, "hookedHotKey", "(IIII)V");
+	m_press = envi->GetStaticMethodID(clazz, "press", "(JZZZZ)V");
+	m_release = envi->GetStaticMethodID(clazz, "release", "(JZZZZ)V");
+	m_pressHotKey = envi->GetStaticMethodID(clazz, "pressHotKey", "(I)V");
+	m_releaseHotkey = envi->GetStaticMethodID(clazz, "releaseHotKey", "(I)V");
 
 	hooking = true;
 	keyboardHook = SetWindowsHookEx(WH_KEYBOARD_LL, KeyboardProc, 0, 0);
 
 	MSG msg;
-	while (GetMessage(&msg, NULL, 0, 0) && hooking) {
+	while (GetMessage(&msg, NULL, 0, 0) && hooking) { //TODO break GetMessage and not wait for input key (on unregister)
 		if (msg.message == WM_HOTKEY) {
-			envi->CallStaticVoidMethod(clazz, m_hotKey, (int) msg.wParam, (int) msg.message, (int) (msg.lParam >> 16), (int) (msg.lParam & 0xffff));
+			//TODO
+			envi->CallStaticVoidMethod(clazz, m_pressHotKey, (int) msg.wParam, (int) msg.message, (int) (msg.lParam >> 16), (int) (msg.lParam & 0xffff));
 		}
 
 		TranslateMessage(&msg);
