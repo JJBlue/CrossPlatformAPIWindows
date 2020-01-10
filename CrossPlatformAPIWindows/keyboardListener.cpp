@@ -5,6 +5,7 @@
 #include <iostream> //Ein und Ausgabe
 
 static bool hooking = false;
+static bool block = false;
 static HHOOK keyboardHook;
 
 static JNIEnv* envi;
@@ -15,7 +16,8 @@ static jmethodID m_hookKey, m_hotKey;
 LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam) {
 	PKBDLLHOOKSTRUCT key = (PKBDLLHOOKSTRUCT) lParam;
 	envi->CallStaticVoidMethod(clazz, m_hookKey, (int)wParam, (int)key->vkCode, (int)key->flags);
-	return CallNextHookEx(keyboardHook, nCode, wParam, lParam);
+	auto value = CallNextHookEx(keyboardHook, nCode, wParam, lParam);
+	return block ? 1 : value;
 }
 
 JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_KeyboardListener_registerListener(JNIEnv* env, jclass) {
@@ -45,4 +47,12 @@ JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_KeyboardListener_unreg
 	hooking = false;
 	//UINT_PTR timerId = SetTimer(NULL, NULL, 10, NULL);
 	//KillTimer(NULL, timerId);
+}
+
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_block(JNIEnv*, jclass) {
+	block = true;
+}
+
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_unblock(JNIEnv*, jclass) {
+	block = false;
 }

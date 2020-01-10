@@ -26,22 +26,22 @@ void release(int key) {
 	SendInput(1, &ip, sizeof(INPUT));
 }
 
-JNIEXPORT jboolean JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_registerHotKey(JNIEnv*, jobject, jint id, jint modifires, jint key) {
+JNIEXPORT jboolean JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_registerHotKey(JNIEnv*, jclass, jint id, jint modifires, jint key) {
 	return RegisterHotKey(NULL, id, modifires, key);
 }
 
-JNIEXPORT jboolean JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_unregisterHotKey(JNIEnv*, jobject, jint id) {
+JNIEXPORT jboolean JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_unregisterHotKey(JNIEnv*, jclass, jint id) {
 	return UnregisterHotKey(NULL, id);
 }
 
-JNIEXPORT jshort JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_getKeyState(JNIEnv*, jobject, jint key) {
+JNIEXPORT jshort JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_getKeyState(JNIEnv*, jclass, jint key) {
 	return GetKeyState(key);
 }
 
-JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_pressKey(JNIEnv*, jobject, jint key) {
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_pressKey(JNIEnv*, jclass, jint key) {
 	press(key);
 }
 
-JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_releaseKey(JNIEnv*, jobject, jint key) {
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_releaseKey(JNIEnv*, jclass, jint key) {
 	release(key);
 }

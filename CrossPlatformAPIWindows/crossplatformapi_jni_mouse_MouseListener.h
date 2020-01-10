@@ -23,6 +23,22 @@ JNIEXPORT void JNICALL Java_crossplatformapi_jni_mouse_MouseListener_registerLis
 JNIEXPORT void JNICALL Java_crossplatformapi_jni_mouse_MouseListener_unregisterListener
   (JNIEnv *, jclass);
 
+/*
+ * Class:     crossplatformapi_jni_mouse_MouseListener
+ * Method:    block
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_mouse_MouseListener_block
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     crossplatformapi_jni_mouse_MouseListener
+ * Method:    unblock
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_mouse_MouseListener_unblock
+  (JNIEnv *, jclass);
+
 #ifdef __cplusplus
 }
 #endif

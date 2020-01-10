@@ -23,6 +23,22 @@ JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_KeyboardListener_regis
 JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_KeyboardListener_unregisterListener
   (JNIEnv *, jclass);
 
+/*
+ * Class:     crossplatformapi_jni_keyboard_KeyboardListener
+ * Method:    block
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_KeyboardListener_block
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     crossplatformapi_jni_keyboard_KeyboardListener
+ * Method:    unblock
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_KeyboardListener_unblock
+  (JNIEnv *, jclass);
+
 #ifdef __cplusplus
 }
 #endif
