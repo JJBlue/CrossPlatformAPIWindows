@@ -2,37 +2,67 @@
 
 #include "crossplatformapi_jni_mouse_MouseListener.h"
 
-HHOOK mouseHook;
+#include <windowsx.h>
 
-JNIEnv* envi;
-jclass clazz;
-jmethodID methodHookMouse;
+#include <iostream> //Ein und Ausgabe
+
+static bool hooking = false;
+static HHOOK mouseHook;
+
+static JNIEnv* envi;
+static jclass clazz;
+static jmethodID m_move, m_scroll, m_press, m_release;
 
 LRESULT CALLBACK mouseHookProc(int nCode, WPARAM wParam, LPARAM lParam) {
-    //wParam = WM_LBUTTONDOWN, WM_LBUTTONUP, WM_MOUSEMOVE, WM_MOUSEWHEEL, WM_MOUSEHWHEEL, WM_RBUTTONDOWN, or WM_RBUTTONUP
-    
-    PMSLLHOOKSTRUCT p = (PMSLLHOOKSTRUCT) lParam;
-    //mouseData: 0x0001 MouseButton one, 0x0002 MouseButton two
-    //pt: x,y
+    //PMSLLHOOKSTRUCT info = (PMSLLHOOKSTRUCT)lParam;
 
-
-//    position.x = p->pt.x;
-//    position.y = p->pt.y;
-    envi->CallStaticVoidMethod(clazz, methodHookMouse, (int) wParam, (int)key->vkCode, (int)key->flags);
+    switch (wParam) {
+        case WM_LBUTTONDOWN:
+            envi->CallStaticVoidMethod(clazz, m_press, 0);
+            break;
+        case WM_LBUTTONUP:
+            envi->CallStaticVoidMethod(clazz, m_release, 0);
+            break;
+        case WM_RBUTTONDOWN:
+            envi->CallStaticVoidMethod(clazz, m_press, 1);
+            break;
+        case WM_RBUTTONUP:
+            envi->CallStaticVoidMethod(clazz, m_release, 0);
+            break;
+        case WM_MOUSEMOVE:
+            envi->CallStaticVoidMethod(clazz, m_move, (long)GET_X_LPARAM(lParam), (long)GET_Y_LPARAM(lParam));
+            break;
+        case WM_MOUSEWHEEL:
+            envi->CallStaticVoidMethod(clazz, m_scroll, (long) GET_WHEEL_DELTA_WPARAM(wParam));
+            break;
+        case WM_MOUSEHWHEEL:
+            break;
+    }
     return CallNextHookEx(NULL, nCode, wParam, lParam);
 }
 
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_mouse_MouseListener_registerListener(JNIEnv* env, jclass) {
+    hooking = true;
+    envi = env;
+    clazz = envi->FindClass("crossplatformapi/main/mouse/MouseEventReceiver");
+    
+    m_move = envi->GetStaticMethodID(clazz, "move", "(JJ)V");
+    m_scroll = envi->GetStaticMethodID(clazz, "scroll", "(J)V");
+    m_press = envi->GetStaticMethodID(clazz, "press", "(I)V");
+    m_release = envi->GetStaticMethodID(clazz, "release", "(I)V");
 
+    mouseHook = SetWindowsHookEx(WH_MOUSE_LL, mouseHookProc, NULL, 0);
 
-JNIEXPORT void JNICALL Java_crossplatformapi_jni_mouse_MouseListener_registerListener(JNIEnv*, jclass) {
+    MSG msg;
+    while (GetMessage(&msg, NULL, 0, 0) && hooking) {
+        TranslateMessage(&msg);
+        DispatchMessage(&msg);
+    }
 
-
-    mouseHook = SetWindowsHookEx(WH_MOUSE_LL, mouseHookProc, NULL, NULL);
+    UnhookWindowsHookEx(mouseHook);
+    mouseHook = NULL;
 }
 
 JNIEXPORT void JNICALL Java_crossplatformapi_jni_mouse_MouseListener_unregisterListener(JNIEnv*, jclass) {
-    if (mouseHook != NULL) {
-        UnhookWindowsHookEx(mouseHook);
-        mouseHook = NULL;
-    }
+    hooking = false;
 }
