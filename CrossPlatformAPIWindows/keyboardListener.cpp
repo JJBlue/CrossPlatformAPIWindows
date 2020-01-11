@@ -14,7 +14,7 @@ static jmethodID m_press, m_release, m_pressHotKey, m_releaseHotkey;
 LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam) {
 	PKBDLLHOOKSTRUCT key = (PKBDLLHOOKSTRUCT) lParam;
 
-	switch (wParam) { //TODO test if WM_* is right syntax
+	switch (wParam) { //TODO alt etc.?
 		case WM_KEYDOWN:
 			envi->CallStaticVoidMethod(clazz, m_press, (long)key->vkCode, false, false, false, false); //TODO flags (int)key->flags
 			break;

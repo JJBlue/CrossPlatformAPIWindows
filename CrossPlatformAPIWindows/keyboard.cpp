@@ -45,3 +45,27 @@ JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_pressKe
 JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_releaseKey(JNIEnv*, jclass, jint key) {
 	release(key);
 }
+
+#include <iostream>
+
+JNIEXPORT jstring JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_getKeyboardLayout(JNIEnv*, jclass) {
+	/*
+		The return value is the input locale identifier for the thread.
+		The low word contains a Language Identifier for the input language
+		and the high word contains a device handle to the physical layout of the keyboard.
+	*/
+	DWORD id = GetCurrentThreadId();
+	HKL hkl = GetKeyboardLayout(id);
+
+	//SUBLANG_HEBREW_ISRAEL;
+
+	WORD low_word = LOWORD(hkl);
+	WORD high_word = HIWORD(hkl);
+
+	int subLanguageID = SUBLANGID(low_word);
+	int primaryLanguageID = SUBLANGID(low_word);
+
+	std::cout << hkl << low_word << " " << " " << subLanguageID << " " << primaryLanguageID << std::endl;
+
+	return NULL;
+}

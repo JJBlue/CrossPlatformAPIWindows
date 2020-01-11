@@ -38,7 +38,7 @@ LRESULT CALLBACK mouseHookProc(int nCode, WPARAM wParam, LPARAM lParam) {
             break;
         }
         case WM_MOUSEMOVE:
-            envi->CallStaticVoidMethod(clazz, m_move, (long)GET_X_LPARAM(lParam), (long)GET_Y_LPARAM(lParam));
+            envi->CallStaticVoidMethod(clazz, m_move, (long) GET_X_LPARAM(lParam), (long) GET_Y_LPARAM(lParam));
             break;
         case WM_MOUSEWHEEL:
             envi->CallStaticVoidMethod(clazz, m_scroll, (long) GET_WHEEL_DELTA_WPARAM(wParam));
