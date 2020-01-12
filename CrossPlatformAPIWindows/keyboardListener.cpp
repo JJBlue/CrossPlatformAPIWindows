@@ -11,15 +11,35 @@ static jclass clazz;
 
 static jmethodID m_press, m_release, m_pressHotKey, m_releaseHotkey;
 
+static bool isKeyPressed(int key) {
+	return GetAsyncKeyState(key) & 0x8000;
+}
+
+static bool isShiftPressed() {
+	return isKeyPressed(VK_LSHIFT) || isKeyPressed(VK_RSHIFT);
+}
+
+static bool isControlPressed() {
+	return isKeyPressed(VK_LCONTROL) || isKeyPressed(VK_RCONTROL);
+}
+
+static bool isAltPressed() {
+	return isKeyPressed(VK_LMENU) || isKeyPressed(VK_RMENU);
+}
+
+static bool isWindowsPressed() {
+	return isKeyPressed(VK_LWIN) || isKeyPressed(VK_RWIN);
+}
+
 LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam) {
 	PKBDLLHOOKSTRUCT key = (PKBDLLHOOKSTRUCT) lParam;
 
-	switch (wParam) { //TODO alt etc.?
+	switch (wParam) {
 		case WM_KEYDOWN:
-			envi->CallStaticVoidMethod(clazz, m_press, (long)key->vkCode, false, false, false, false); //TODO flags (int)key->flags
+			envi->CallStaticVoidMethod(clazz, m_press, (long)key->vkCode, isControlPressed(), isWindowsPressed(), isAltPressed(), isShiftPressed());
 			break;
 		case WM_KEYUP:
-			envi->CallStaticVoidMethod(clazz, m_release, (long)key->vkCode, false, false, false, false); //TODO flags
+			envi->CallStaticVoidMethod(clazz, m_release, (long)key->vkCode, isControlPressed(), isWindowsPressed(), isAltPressed(), isShiftPressed());
 			break;
 	}
 

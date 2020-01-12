@@ -25,10 +25,10 @@ JNIEXPORT jboolean JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_unr
 
 /*
  * Class:     crossplatformapi_jni_keyboard_NativeKeyboard
- * Method:    getKeyState
- * Signature: (I)S
+ * Method:    isKeyPressed
+ * Signature: (I)Z
  */
-JNIEXPORT jshort JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_getKeyState
+JNIEXPORT jboolean JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_isKeyPressed
   (JNIEnv *, jclass, jint);
 
 /*
@@ -53,6 +53,14 @@ JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_release
  * Signature: ()Ljava/lang/String;
  */
 JNIEXPORT jstring JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_getKeyboardLayout
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     crossplatformapi_jni_keyboard_NativeKeyboard
+ * Method:    getPhysicalLayout
+ * Signature: ()Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_getPhysicalLayout
   (JNIEnv *, jclass);
 
 #ifdef __cplusplus

@@ -2,7 +2,7 @@
 
 #include "crossplatformapi_jni_keyboard_NativeKeyboard.h"
 
-void press(int key) {
+static void press(int key) {
 	INPUT ip;
 	ip.type = INPUT_KEYBOARD;
 	ip.ki.wScan = 0;
@@ -14,7 +14,7 @@ void press(int key) {
 	SendInput(1, &ip, sizeof(INPUT));
 }
 
-void release(int key) {
+static void release(int key) {
 	INPUT ip;
 	ip.type = INPUT_KEYBOARD;
 	ip.ki.wScan = 0;
@@ -26,6 +26,10 @@ void release(int key) {
 	SendInput(1, &ip, sizeof(INPUT));
 }
 
+static bool isKeyPressed(int key) {
+	return GetKeyState(key) & 0x8000;
+}
+
 JNIEXPORT jboolean JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_registerHotKey(JNIEnv*, jclass, jint id, jint modifires, jint key) {
 	return (bool) RegisterHotKey(NULL, id, modifires, key);
 }
@@ -34,8 +38,8 @@ JNIEXPORT jboolean JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_unr
 	return UnregisterHotKey(NULL, id);
 }
 
-JNIEXPORT jshort JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_getKeyState(JNIEnv*, jclass, jint key) {
-	return GetKeyState(key);
+JNIEXPORT jboolean JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_isKeyPressed(JNIEnv*, jclass, jint key) {
+	return isKeyPressed(key);
 }
 
 JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_pressKey(JNIEnv*, jclass, jint key) {
@@ -65,7 +69,7 @@ JNIEXPORT jstring JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_getK
 	int subLanguageID = SUBLANGID(low_word);
 	int primaryLanguageID = SUBLANGID(low_word);
 
-	std::cout << hkl << low_word << " " << " " << subLanguageID << " " << primaryLanguageID << std::endl;
+	std::cout << hkl << " " << low_word << " " << high_word << std::endl;
 
 	return NULL;
 }
