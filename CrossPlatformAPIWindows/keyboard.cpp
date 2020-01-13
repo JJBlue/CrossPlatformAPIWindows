@@ -61,8 +61,6 @@ JNIEXPORT jstring JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_getK
 	DWORD id = GetCurrentThreadId();
 	HKL hkl = GetKeyboardLayout(id);
 
-	//SUBLANG_HEBREW_ISRAEL;
-
 	WORD low_word = LOWORD(hkl);
 	WORD high_word = HIWORD(hkl);
 

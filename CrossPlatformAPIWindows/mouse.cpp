@@ -110,7 +110,8 @@ JNIEXPORT void JNICALL Java_crossplatformapi_jni_mouse_NativeMouse_click(JNIEnv*
 }
 
 JNIEXPORT void JNICALL Java_crossplatformapi_jni_mouse_NativeMouse_move(JNIEnv*, jclass, jlong x, jlong y) {
-	move(x, y);
+	//move(x, y);
+	SetCursorPos(x, y);
 }
 
 JNIEXPORT void JNICALL Java_crossplatformapi_jni_mouse_NativeMouse_scroll(JNIEnv*, jclass, jint delta) {

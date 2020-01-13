@@ -79,10 +79,10 @@ JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_KeyboardListener_unreg
 	//KillTimer(NULL, timerId);
 }
 
-JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_block(JNIEnv*, jclass) {
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_KeyboardListener_block(JNIEnv*, jclass) {
 	block = true;
 }
 
-JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_unblock(JNIEnv*, jclass) {
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_KeyboardListener_unblock(JNIEnv*, jclass) {
 	block = false;
 }
