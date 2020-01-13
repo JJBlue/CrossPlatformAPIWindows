@@ -10,7 +10,9 @@ static HHOOK mouseHook;
 
 static JNIEnv* envi;
 static jclass clazz;
-static jmethodID m_move, m_scroll, m_press, m_release;
+static jmethodID m_move, m_scroll, m_hscroll, m_press, m_release;
+
+#include<iostream>
 
 LRESULT CALLBACK mouseHookProc(int nCode, WPARAM wParam, LPARAM lParam) {
     //PMSLLHOOKSTRUCT info = (PMSLLHOOKSTRUCT)lParam;
@@ -40,23 +42,29 @@ LRESULT CALLBACK mouseHookProc(int nCode, WPARAM wParam, LPARAM lParam) {
         case WM_MOUSEMOVE:
             envi->CallStaticVoidMethod(clazz, m_move, (long) GET_X_LPARAM(lParam), (long) GET_Y_LPARAM(lParam));
             break;
-        case WM_MOUSEWHEEL:
-            envi->CallStaticVoidMethod(clazz, m_scroll, (long) GET_WHEEL_DELTA_WPARAM(wParam));
+        case WM_MOUSEWHEEL: {
+            PMSLLHOOKSTRUCT info = (PMSLLHOOKSTRUCT)lParam;
+            envi->CallStaticVoidMethod(clazz, m_scroll, (jlong)(jshort) GET_WHEEL_DELTA_WPARAM(info->mouseData));
             break;
-        case WM_MOUSEHWHEEL:
+        }
+        case WM_MOUSEHWHEEL: {
+            PMSLLHOOKSTRUCT info = (PMSLLHOOKSTRUCT)lParam;
+            envi->CallStaticVoidMethod(clazz, m_hscroll, (jlong)(jshort) GET_WHEEL_DELTA_WPARAM(info->mouseData));
             break;
+        }
     }
     auto value = CallNextHookEx(NULL, nCode, wParam, lParam);
     return block ? 1 : value;
 }
 
-JNIEXPORT void JNICALL Java_crossplatformapi_jni_mouse_MouseListener_registerListener(JNIEnv* env, jclass) {
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_mouse_MouseListener_registerListener(JNIEnv* env, jclass){
     hooking = true;
     envi = env;
     clazz = envi->FindClass("crossplatformapi/main/mouse/MouseEventReceiver");
     
     m_move = envi->GetStaticMethodID(clazz, "move", "(JJ)V");
     m_scroll = envi->GetStaticMethodID(clazz, "scroll", "(J)V");
+    m_hscroll = envi->GetStaticMethodID(clazz, "hscroll", "(J)V");
     m_press = envi->GetStaticMethodID(clazz, "press", "(I)V");
     m_release = envi->GetStaticMethodID(clazz, "release", "(I)V");
 
