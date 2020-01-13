@@ -157,8 +157,8 @@
   <ItemGroup>
     <ClInclude Include="crossplatformapi_jni_keyboard_KeyboardListener.h" />
     <ClInclude Include="crossplatformapi_jni_keyboard_NativeKeyboard.h" />
-    <ClInclude Include="crossplatformapi_jni_mouse_Mouse.h" />
     <ClInclude Include="crossplatformapi_jni_mouse_MouseListener.h" />
+    <ClInclude Include="crossplatformapi_jni_mouse_NativeMouse.h" />
     <ClInclude Include="crossplatformapi_jni_network_Network.h" />
     <ClInclude Include="crossplatformapi_jni_stats_PowerStates.h" />
     <ClInclude Include="framework.h" />

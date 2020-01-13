@@ -18,25 +18,33 @@ LRESULT CALLBACK mouseHookProc(int nCode, WPARAM wParam, LPARAM lParam) {
     //PMSLLHOOKSTRUCT info = (PMSLLHOOKSTRUCT)lParam;
     switch (wParam) {
         case WM_LBUTTONDOWN:
-            envi->CallStaticVoidMethod(clazz, m_press, 0);
+            envi->CallStaticVoidMethod(clazz, m_press, VK_LBUTTON);
             break;
         case WM_LBUTTONUP:
-            envi->CallStaticVoidMethod(clazz, m_release, 0);
+            envi->CallStaticVoidMethod(clazz, m_release, VK_LBUTTON);
             break;
         case WM_RBUTTONDOWN:
-            envi->CallStaticVoidMethod(clazz, m_press, 1);
+            envi->CallStaticVoidMethod(clazz, m_press, VK_RBUTTON);
             break;
         case WM_RBUTTONUP:
-            envi->CallStaticVoidMethod(clazz, m_release, 1);
+            envi->CallStaticVoidMethod(clazz, m_release, VK_RBUTTON);
+            break;
+        case WM_MBUTTONDOWN:
+            envi->CallStaticVoidMethod(clazz, m_press, VK_MBUTTON);
+            break;
+        case WM_MBUTTONUP:
+            envi->CallStaticVoidMethod(clazz, m_release, VK_MBUTTON);
             break;
         case WM_XBUTTONDOWN: {
-            int xbutton = GET_XBUTTON_WPARAM(wParam);
-            envi->CallStaticVoidMethod(clazz, m_press, xbutton + 2);
+            PMSLLHOOKSTRUCT info = (PMSLLHOOKSTRUCT)lParam;
+            int xbutton = GET_XBUTTON_WPARAM(info->mouseData);
+            envi->CallStaticVoidMethod(clazz, m_press, VK_XBUTTON1 - 1 + xbutton);
             break;
         }
         case WM_XBUTTONUP: {
-            int xbutton = GET_XBUTTON_WPARAM(wParam);
-            envi->CallStaticVoidMethod(clazz, m_release, xbutton + 2);
+            PMSLLHOOKSTRUCT info = (PMSLLHOOKSTRUCT)lParam;
+            int xbutton = GET_XBUTTON_WPARAM(info->mouseData);
+            envi->CallStaticVoidMethod(clazz, m_release, VK_XBUTTON1 - 1 + xbutton);
             break;
         }
         case WM_MOUSEMOVE:

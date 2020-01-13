@@ -36,7 +36,7 @@
     <ClInclude Include="crossplatformapi_jni_network_Network.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="crossplatformapi_jni_mouse_Mouse.h">
+    <ClInclude Include="crossplatformapi_jni_mouse_NativeMouse.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
