@@ -49,6 +49,14 @@ JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_release
 
 /*
  * Class:     crossplatformapi_jni_keyboard_NativeKeyboard
+ * Method:    write
+ * Signature: (Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_write
+  (JNIEnv *, jclass, jstring);
+
+/*
+ * Class:     crossplatformapi_jni_keyboard_NativeKeyboard
  * Method:    getKeyboardLayout
  * Signature: ()Ljava/lang/String;
  */

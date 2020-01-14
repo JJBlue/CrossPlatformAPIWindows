@@ -1,6 +1,8 @@
-#include "pch.h"
+﻿#include "pch.h"
 
 #include "crossplatformapi_jni_keyboard_NativeKeyboard.h"
+
+#include <string>
 
 static void press(int key) {
 	INPUT ip;
@@ -26,6 +28,19 @@ static void release(int key) {
 	SendInput(1, &ip, sizeof(INPUT));
 }
 
+static void write(std::wstring text) {
+	for (auto ch : text) {
+		INPUT input = {0};
+		input.type = INPUT_KEYBOARD;
+		input.ki.dwFlags = KEYEVENTF_UNICODE;
+		input.ki.wScan = ch;
+		SendInput(1, &input, sizeof(INPUT));
+
+		input.ki.dwFlags |= KEYEVENTF_KEYUP;
+		SendInput(1, &input, sizeof(INPUT));
+	}
+}
+
 static bool isKeyPressed(int key) {
 	return GetKeyState(key) & 0x8000;
 }
@@ -48,6 +63,13 @@ JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_pressKe
 
 JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_releaseKey(JNIEnv*, jclass, jint key) {
 	release(key);
+}
+
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_write(JNIEnv* env, jclass, jstring text) {
+	//const char* nativeString = env->GetStringUTFChars(text, 0);
+	const wchar_t* nativeString = (wchar_t*) env->GetStringChars(text, 0);
+	//jsize size = env->GetStringLength(text);
+	write(nativeString);
 }
 
 #include <iostream>
