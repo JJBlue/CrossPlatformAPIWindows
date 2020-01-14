@@ -31,15 +31,19 @@ static bool isWindowsPressed() {
 	return isKeyPressed(VK_LWIN) || isKeyPressed(VK_RWIN);
 }
 
+static int getModifier() {
+	return (0 | (isShiftPressed() ? MOD_SHIFT : 0) | (isControlPressed() ? MOD_CONTROL : 0) | (isAltPressed() ? MOD_ALT : 0) | (isWindowsPressed() ? MOD_WIN : 0));
+}
+
 LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam) {
 	PKBDLLHOOKSTRUCT key = (PKBDLLHOOKSTRUCT) lParam;
 
 	switch (wParam) {
 		case WM_KEYDOWN:
-			envi->CallStaticVoidMethod(clazz, m_press, (long)key->vkCode, isControlPressed(), isWindowsPressed(), isAltPressed(), isShiftPressed());
+			envi->CallStaticVoidMethod(clazz, m_press, (long)key->vkCode, (long) getModifier());
 			break;
 		case WM_KEYUP:
-			envi->CallStaticVoidMethod(clazz, m_release, (long)key->vkCode, isControlPressed(), isWindowsPressed(), isAltPressed(), isShiftPressed());
+			envi->CallStaticVoidMethod(clazz, m_release, (long)key->vkCode, (long) getModifier());
 			break;
 	}
 
@@ -50,8 +54,8 @@ LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam) {
 JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_KeyboardListener_registerListener(JNIEnv* env, jclass) {
 	envi = env;
 	clazz = envi->FindClass("crossplatformapi/main/keyboard/KeyEventReceiver");
-	m_press = envi->GetStaticMethodID(clazz, "press", "(JZZZZ)V");
-	m_release = envi->GetStaticMethodID(clazz, "release", "(JZZZZ)V");
+	m_press = envi->GetStaticMethodID(clazz, "press", "(JJ)V");
+	m_release = envi->GetStaticMethodID(clazz, "release", "(JJ)V");
 	m_pressHotKey = envi->GetStaticMethodID(clazz, "pressHotKey", "(I)V");
 	m_releaseHotkey = envi->GetStaticMethodID(clazz, "releaseHotKey", "(I)V");
 
