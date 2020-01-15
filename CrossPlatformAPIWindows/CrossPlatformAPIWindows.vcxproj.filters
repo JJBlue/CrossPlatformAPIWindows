@@ -13,6 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Quelldateien\jni">
+      <UniqueIdentifier>{416f32f9-628f-4166-b977-ae9aa3b0863d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\windows">
+      <UniqueIdentifier>{2789f0c1-332b-4053-bf94-d88aa0244555}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\jni">
+      <UniqueIdentifier>{ab70e1b5-4112-4b8b-b114-cec34447ab23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\windows">
+      <UniqueIdentifier>{2b90ce94-2db9-4a7a-af92-723731b7cd9e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -21,23 +33,38 @@
     <ClInclude Include="pch.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="crossplatformapi_jni_stats_PowerStates.h">
-      <Filter>Headerdateien</Filter>
+    <ClInclude Include="crossplatformapi_jni_keyboard_KeyboardListener.h">
+      <Filter>Headerdateien\jni</Filter>
     </ClInclude>
     <ClInclude Include="crossplatformapi_jni_keyboard_NativeKeyboard.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="crossplatformapi_jni_keyboard_KeyboardListener.h">
-      <Filter>Headerdateien</Filter>
+      <Filter>Headerdateien\jni</Filter>
     </ClInclude>
     <ClInclude Include="crossplatformapi_jni_mouse_MouseListener.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="crossplatformapi_jni_network_Network.h">
-      <Filter>Headerdateien</Filter>
+      <Filter>Headerdateien\jni</Filter>
     </ClInclude>
     <ClInclude Include="crossplatformapi_jni_mouse_NativeMouse.h">
-      <Filter>Headerdateien</Filter>
+      <Filter>Headerdateien\jni</Filter>
+    </ClInclude>
+    <ClInclude Include="crossplatformapi_jni_network_Network.h">
+      <Filter>Headerdateien\jni</Filter>
+    </ClInclude>
+    <ClInclude Include="crossplatformapi_jni_stats_PowerStates.h">
+      <Filter>Headerdateien\jni</Filter>
+    </ClInclude>
+    <ClInclude Include="window.h">
+      <Filter>Headerdateien\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="keyboard.h">
+      <Filter>Headerdateien\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="keyboardListener.h">
+      <Filter>Headerdateien\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="mouse.h">
+      <Filter>Headerdateien\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="crossplatformapi_jni_window_NativeWindow.h">
+      <Filter>Headerdateien\jni</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -47,23 +74,38 @@
     <ClCompile Include="pch.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="PowerState.cpp">
-      <Filter>Quelldateien</Filter>
+    <ClCompile Include="window.cpp">
+      <Filter>Quelldateien\windows</Filter>
     </ClCompile>
-    <ClCompile Include="keyboard.cpp">
-      <Filter>Quelldateien</Filter>
+    <ClCompile Include="jni_window.cpp">
+      <Filter>Quelldateien\jni</Filter>
     </ClCompile>
     <ClCompile Include="keyboardListener.cpp">
-      <Filter>Quelldateien</Filter>
+      <Filter>Quelldateien\windows</Filter>
     </ClCompile>
-    <ClCompile Include="mouseListener.cpp">
-      <Filter>Quelldateien</Filter>
+    <ClCompile Include="jni_keyboardListener.cpp">
+      <Filter>Quelldateien\jni</Filter>
     </ClCompile>
-    <ClCompile Include="Network.cpp">
-      <Filter>Quelldateien</Filter>
+    <ClCompile Include="keyboard.cpp">
+      <Filter>Quelldateien\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="jni_keyboard.cpp">
+      <Filter>Quelldateien\jni</Filter>
     </ClCompile>
     <ClCompile Include="mouse.cpp">
-      <Filter>Quelldateien</Filter>
+      <Filter>Quelldateien\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="jni_mouse.cpp">
+      <Filter>Quelldateien\jni</Filter>
+    </ClCompile>
+    <ClCompile Include="PowerState.cpp">
+      <Filter>Quelldateien\jni</Filter>
+    </ClCompile>
+    <ClCompile Include="mouseListener.cpp">
+      <Filter>Quelldateien\jni</Filter>
+    </ClCompile>
+    <ClCompile Include="Network.cpp">
+      <Filter>Quelldateien\jni</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

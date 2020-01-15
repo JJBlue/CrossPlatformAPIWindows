@@ -1,15 +1,16 @@
 #include "pch.h"
 
-#include "crossplatformapi_jni_keyboard_KeyboardListener.h"
+#include "jni.h"
+#include "keyboardListener.h"
 
 static bool hooking = false;
 static bool block = false;
 static HHOOK keyboardHook;
 
-static JNIEnv* envi;
-static jclass clazz;
+JNIEnv* envi;
+jclass keyboardReceiverClass;
 
-static jmethodID m_press, m_release, m_pressHotKey, m_releaseHotkey;
+jmethodID m_keyPress, m_keyRelease, m_keyHotKey;
 
 static bool isKeyPressed(int key) {
 	return GetAsyncKeyState(key) & 0x8000;
@@ -35,38 +36,31 @@ static int getModifier() {
 	return (0 | (isShiftPressed() ? MOD_SHIFT : 0) | (isControlPressed() ? MOD_CONTROL : 0) | (isAltPressed() ? MOD_ALT : 0) | (isWindowsPressed() ? MOD_WIN : 0));
 }
 
-LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam) {
-	PKBDLLHOOKSTRUCT key = (PKBDLLHOOKSTRUCT) lParam;
+static LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam) {
+	PKBDLLHOOKSTRUCT key = (PKBDLLHOOKSTRUCT)lParam;
 
 	switch (wParam) {
-		case WM_KEYDOWN:
-			envi->CallStaticVoidMethod(clazz, m_press, (long)key->vkCode, (long) getModifier());
-			break;
-		case WM_KEYUP:
-			envi->CallStaticVoidMethod(clazz, m_release, (long)key->vkCode, (long) getModifier());
-			break;
+	case WM_KEYDOWN:
+		envi->CallStaticVoidMethod(keyboardReceiverClass, m_keyPress, (long)key->vkCode, (long)getModifier());
+		break;
+	case WM_KEYUP:
+		envi->CallStaticVoidMethod(keyboardReceiverClass, m_keyRelease, (long)key->vkCode, (long)getModifier());
+		break;
 	}
 
 	auto value = CallNextHookEx(keyboardHook, nCode, wParam, lParam);
 	return block ? 1 : value;
 }
 
-JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_KeyboardListener_registerListener(JNIEnv* env, jclass) {
-	envi = env;
-	clazz = envi->FindClass("crossplatformapi/main/keyboard/KeyEventReceiver");
-	m_press = envi->GetStaticMethodID(clazz, "press", "(JJ)V");
-	m_release = envi->GetStaticMethodID(clazz, "release", "(JJ)V");
-	m_pressHotKey = envi->GetStaticMethodID(clazz, "pressHotKey", "(I)V");
-	m_releaseHotkey = envi->GetStaticMethodID(clazz, "releaseHotKey", "(I)V");
-
-	hooking = true;
+void startKeyHooking() {
+	setKeyHooking(true);
 	keyboardHook = SetWindowsHookEx(WH_KEYBOARD_LL, KeyboardProc, 0, 0);
 
 	MSG msg;
 	while (GetMessage(&msg, NULL, 0, 0) && hooking) { //TODO break GetMessage and not wait for input key (on unregister)
 		if (msg.message == WM_HOTKEY) {
 			//TODO
-			envi->CallStaticVoidMethod(clazz, m_pressHotKey, (int) msg.wParam, (int) msg.message, (int) (msg.lParam >> 16), (int) (msg.lParam & 0xffff));
+			envi->CallStaticVoidMethod(keyboardReceiverClass, m_keyHotKey, (int)msg.wParam, (int)msg.message, (int)(msg.lParam >> 16), (int)(msg.lParam & 0xffff));
 		}
 
 		TranslateMessage(&msg);
@@ -77,16 +71,12 @@ JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_KeyboardListener_regis
 	keyboardHook = NULL;
 }
 
-JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_KeyboardListener_unregisterListener(JNIEnv*, jclass) {
-	hooking = false;
+void setKeyHooking(bool value) {
+	hooking = value;
 	//UINT_PTR timerId = SetTimer(NULL, NULL, 10, NULL);
 	//KillTimer(NULL, timerId);
 }
 
-JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_KeyboardListener_block(JNIEnv*, jclass) {
-	block = true;
-}
-
-JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_KeyboardListener_unblock(JNIEnv*, jclass) {
-	block = false;
+void setKeyBlock(bool value) {
+	block = value;
 }
