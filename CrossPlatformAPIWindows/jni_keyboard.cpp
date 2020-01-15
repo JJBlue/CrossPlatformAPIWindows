@@ -24,8 +24,14 @@ JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_release
 }
 
 JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_write(JNIEnv* env, jclass, jstring text) {
-	const wchar_t* nativeString = (wchar_t*)env->GetStringChars(text, 0);
+	jboolean isCopy;
+	const wchar_t* nativeString = (wchar_t*)env->GetStringChars(text, &isCopy);
+
 	write(nativeString);
+
+	if (isCopy == JNI_TRUE) {
+		env->ReleaseStringChars(text, (const jchar*) nativeString);
+	}
 }
 
 #include <iostream>

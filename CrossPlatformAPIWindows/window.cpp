@@ -4,9 +4,7 @@
 
 #include <windows.h>
 #include <string>
-
 #include <vector>
-#include <iostream>
 
 long long hwndToLong(HWND hwnd) {
 	return (long)(long)hwnd;
@@ -16,83 +14,37 @@ HWND longToHWND(long long id) {
 	return (HWND) id;
 }
 
-void getWindowTitle(HWND hwnd, windowTitle* wt) {
-	if (hwnd == NULL || wt == NULL) return;
-
-	int length = GetWindowTextLengthW(hwnd) + 1;
-	wchar_t* wnd_title = new wchar_t[length];
-	
-	GetWindowTextW(hwnd, wnd_title, length);
-
-	wt->wtitle = wnd_title;
-	wt->length = length;
-}
-
-
 //---Find Functions----
 
 HWND getFocusWindow() {
 	return GetForegroundWindow();
 }
 
-static BOOL CALLBACK findAnWindow(HWND hwnd, LPARAM lParam) {
+static BOOL CALLBACK allWindows(HWND hwnd, LPARAM lParam) {
 	if (hwnd == NULL) return TRUE;
 
 	if (IsWindowVisible(hwnd)) {
-		findWindowClass* fwc = (findWindowClass*)lParam;
-
-		windowTitle wt;
-		getWindowTitle(hwnd, &wt);
-
-		if (wt.length > 1) {
-			try {
-				std::wstring title = wt.wtitle;
-
-				if (title.find(fwc->wtitle.c_str()) != std::wstring::npos) {
-					fwc->hwnd = hwnd;
-					fwc->wtitle = title;
-					return FALSE;
-				}
-			} catch (const std::exception&) {}
-		}
-
-		wt.Delete();
+		std::vector<HWND>* fwc = (std::vector<HWND>*) lParam;
+		fwc->push_back(hwnd);
 	}
 	return TRUE;
 }
 
-HWND findWindow(const wchar_t* titleArray) {
-	HWND hwnd = FindWindowW(NULL, titleArray);
-	if (hwnd != NULL)
-		return hwnd;
-
-	findWindowClass fwc;
-	fwc.wtitle = std::wstring(titleArray);
-	EnumWindows(&findAnWindow, (LPARAM) &fwc);
-
-	return fwc.hwnd;
-}
-
-static BOOL CALLBACK getWindowTitles(HWND hwnd, LPARAM lParam) {
-	if (hwnd == NULL) return TRUE;
-
-	if (IsWindowVisible(hwnd)) {
-		std::vector<windowTitle>* titles = (std::vector<windowTitle>*)lParam;
-
-		windowTitle wt;
-		getWindowTitle(hwnd, &wt);
-
-		if (wt.length > 1)
-			titles->insert(titles->begin(), wt);
-	}
-	return TRUE;
-}
-
-void getWindowTitles(std::vector<windowTitle>* titles) {
-	EnumWindows(&getWindowTitles, (LPARAM)titles);
+void getAllVisibleWindows(std::vector<HWND>* list) {
+	EnumWindows(&allWindows, (LPARAM) list);
 }
 
 //---Set/Get HWND properties---
+
+void getWindowTitle(HWND hwnd, std::wstring *title) {
+	if (hwnd == NULL) return;
+
+	int length = GetWindowTextLengthW(hwnd) + 1;
+	wchar_t* wnd_title = new wchar_t[length];
+	GetWindowTextW(hwnd, wnd_title, length);
+
+	title->append(wnd_title);
+}
 
 std::string getWindowClassName(HWND hwnd) {
 	char class_name[256 * 2];

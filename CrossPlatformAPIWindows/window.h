@@ -1,34 +1,17 @@
 #pragma once
 
 #include <string>
-
-class windowTitle {
-public:
-
-	wchar_t* wtitle = NULL;
-	int length;
-
-	void Delete() {
-		if (wtitle != NULL)
-			delete[] wtitle;
-	}
-};
-
-class findWindowClass {
-public:
-	std::wstring wtitle;
-	HWND hwnd;
-};
+#include <vector>
 
 long long hwndToLong(HWND hwnd);
 
 HWND longToHWND(long long id);
 
-void getWindowTitle(HWND hwnd, windowTitle* wt);
+void getWindowTitle(HWND hwnd, std::wstring*);
 
 HWND getFocusWindow();
 
-HWND findWindow(const wchar_t* titleArray);
+void getAllVisibleWindows(std::vector<HWND>* list);
 
 std::string getWindowClassName(HWND hwnd);
 
