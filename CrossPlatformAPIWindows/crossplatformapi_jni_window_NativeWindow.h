@@ -113,6 +113,22 @@ JNIEXPORT void JNICALL Java_crossplatformapi_jni_window_NativeWindow_toBack
 
 /*
  * Class:     crossplatformapi_jni_window_NativeWindow
+ * Method:    isMaximized
+ * Signature: (J)Z
+ */
+JNIEXPORT jboolean JNICALL Java_crossplatformapi_jni_window_NativeWindow_isMaximized
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     crossplatformapi_jni_window_NativeWindow
+ * Method:    isMinimized
+ * Signature: (J)Z
+ */
+JNIEXPORT jboolean JNICALL Java_crossplatformapi_jni_window_NativeWindow_isMinimized
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     crossplatformapi_jni_window_NativeWindow
  * Method:    maximize
  * Signature: (J)V
  */

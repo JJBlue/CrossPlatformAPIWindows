@@ -189,10 +189,10 @@ bool isWindowMaximized(HWND hwnd) {
 void windowMinimize(HWND hwnd) {
 	ShowWindow(hwnd, SW_MINIMIZE);
 }
+
 bool isWindowMinimized(HWND hwnd) {
 	return IsIconic(hwnd);
 }
-
 
 void windowRestore(HWND hwnd) {
 	ShowWindow(hwnd, SW_RESTORE);

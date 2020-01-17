@@ -41,7 +41,11 @@ void setWindowSize(HWND hwnd, long width, long height);
 
 void windowMaximize(HWND hwnd);
 
+bool isWindowMaximized(HWND hwnd);
+
 void windowMinimize(HWND hwnd);
+
+bool isWindowMinimized(HWND hwnd);
 
 void windowRestore(HWND hwnd);
 

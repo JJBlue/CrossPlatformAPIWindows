@@ -101,6 +101,16 @@ JNIEXPORT void JNICALL Java_crossplatformapi_jni_window_NativeWindow_toBack(JNIE
 	windowToBack(hwnd);
 }
 
+JNIEXPORT jboolean JNICALL Java_crossplatformapi_jni_window_NativeWindow_isMaximized(JNIEnv*, jclass, jlong window) {
+	HWND hwnd = longToHWND(window);
+	return isWindowMaximized(hwnd);
+}
+
+JNIEXPORT jboolean JNICALL Java_crossplatformapi_jni_window_NativeWindow_isMinimized(JNIEnv*, jclass, jlong window) {
+	HWND hwnd = longToHWND(window);
+	return isWindowMinimized(hwnd);
+}
+
 JNIEXPORT void JNICALL Java_crossplatformapi_jni_window_NativeWindow_maximize(JNIEnv*, jclass, jlong window) {
 	HWND hwnd = longToHWND(window);
 	windowMaximize(hwnd);

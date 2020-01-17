@@ -10,7 +10,7 @@
 static HHOOK windowHook = NULL;
 static bool hooking;
 
-void CALLBACK Wineventproc(HWINEVENTHOOK hook, DWORD event, HWND hwnd, LONG idObject, LONG idChild, DWORD dwEventThread, DWORD dwmsEventTime) {
+static void CALLBACK Wineventproc(HWINEVENTHOOK hook, DWORD event, HWND hwnd, LONG idObject, LONG idChild, DWORD dwEventThread, DWORD dwmsEventTime) {
     //TODO Open Close Window
     switch (event) {
         case EVENT_SYSTEM_MINIMIZESTART:
