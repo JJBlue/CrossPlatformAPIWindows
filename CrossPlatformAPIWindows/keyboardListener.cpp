@@ -54,6 +54,10 @@ static LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam) {
 
 void startKeyHooking() {
 	setKeyHooking(true);
+
+	if (keyboardHook != NULL)
+		return;
+
 	keyboardHook = SetWindowsHookEx(WH_KEYBOARD_LL, KeyboardProc, 0, 0);
 
 	MSG msg;

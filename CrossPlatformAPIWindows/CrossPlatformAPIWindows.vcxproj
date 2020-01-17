@@ -162,12 +162,14 @@
     <ClInclude Include="crossplatformapi_jni_network_Network.h" />
     <ClInclude Include="crossplatformapi_jni_stats_PowerStates.h" />
     <ClInclude Include="crossplatformapi_jni_window_NativeWindow.h" />
+    <ClInclude Include="crossplatformapi_jni_window_WindowListener.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="keyboard.h" />
     <ClInclude Include="keyboardListener.h" />
     <ClInclude Include="mouse.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="window.h" />
+    <ClInclude Include="windowListener.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
@@ -175,6 +177,7 @@
     <ClCompile Include="jni_keyboardListener.cpp" />
     <ClCompile Include="jni_mouse.cpp" />
     <ClCompile Include="jni_window.cpp" />
+    <ClCompile Include="jni_windowListener.cpp" />
     <ClCompile Include="keyboard.cpp" />
     <ClCompile Include="keyboardListener.cpp" />
     <ClCompile Include="mouse.cpp" />
@@ -188,6 +191,7 @@
     </ClCompile>
     <ClCompile Include="PowerState.cpp" />
     <ClCompile Include="window.cpp" />
+    <ClCompile Include="windowListener.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

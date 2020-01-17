@@ -11,7 +11,9 @@ void getWindowTitle(HWND hwnd, std::wstring*);
 
 HWND getFocusWindow();
 
-void getAllVisibleWindows(std::vector<HWND>* list);
+void getUserWindows(std::vector<HWND>* list);
+
+void getAllWindows(std::vector<HWND>* list);
 
 std::string getWindowClassName(HWND hwnd);
 
@@ -36,3 +38,15 @@ void setTopMost(HWND hwnd, bool value);
 void setWindowPosition(HWND hwnd, long x, long y);
 
 void setWindowSize(HWND hwnd, long width, long height);
+
+void windowMaximize(HWND hwnd);
+
+void windowMinimize(HWND hwnd);
+
+void windowRestore(HWND hwnd);
+
+void windowHide(HWND hwnd);
+
+void windowShow(HWND hwnd);
+
+void windowClose(HWND hwnd);
