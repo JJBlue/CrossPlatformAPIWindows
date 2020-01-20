@@ -9,11 +9,27 @@ extern "C" {
 #endif
 /*
  * Class:     crossplatformapi_jni_display_NativeDisplay
- * Method:    getMainDisplay
+ * Method:    getPrimaryDisplay
  * Signature: ()J
  */
-JNIEXPORT jlong JNICALL Java_crossplatformapi_jni_display_NativeDisplay_getMainDisplay
+JNIEXPORT jlong JNICALL Java_crossplatformapi_jni_display_NativeDisplay_getPrimaryDisplay
   (JNIEnv *, jclass);
+
+/*
+ * Class:     crossplatformapi_jni_display_NativeDisplay
+ * Method:    getDisplay
+ * Signature: (J)J
+ */
+JNIEXPORT jlong JNICALL Java_crossplatformapi_jni_display_NativeDisplay_getDisplay__J
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     crossplatformapi_jni_display_NativeDisplay
+ * Method:    getDisplay
+ * Signature: (JJ)J
+ */
+JNIEXPORT jlong JNICALL Java_crossplatformapi_jni_display_NativeDisplay_getDisplay__JJ
+  (JNIEnv *, jclass, jlong, jlong);
 
 /*
  * Class:     crossplatformapi_jni_display_NativeDisplay
@@ -25,35 +41,75 @@ JNIEXPORT jlongArray JNICALL Java_crossplatformapi_jni_display_NativeDisplay_get
 
 /*
  * Class:     crossplatformapi_jni_display_NativeDisplay
+ * Method:    isPrimary
+ * Signature: (J)Z
+ */
+JNIEXPORT jboolean JNICALL Java_crossplatformapi_jni_display_NativeDisplay_isPrimary
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     crossplatformapi_jni_display_NativeDisplay
  * Method:    getX
- * Signature: ()J
+ * Signature: (J)J
  */
 JNIEXPORT jlong JNICALL Java_crossplatformapi_jni_display_NativeDisplay_getX
-  (JNIEnv *, jclass);
+  (JNIEnv *, jclass, jlong);
 
 /*
  * Class:     crossplatformapi_jni_display_NativeDisplay
  * Method:    getY
- * Signature: ()J
+ * Signature: (J)J
  */
 JNIEXPORT jlong JNICALL Java_crossplatformapi_jni_display_NativeDisplay_getY
-  (JNIEnv *, jclass);
+  (JNIEnv *, jclass, jlong);
 
 /*
  * Class:     crossplatformapi_jni_display_NativeDisplay
  * Method:    getWidth
- * Signature: ()J
+ * Signature: (J)J
  */
 JNIEXPORT jlong JNICALL Java_crossplatformapi_jni_display_NativeDisplay_getWidth
-  (JNIEnv *, jclass);
+  (JNIEnv *, jclass, jlong);
 
 /*
  * Class:     crossplatformapi_jni_display_NativeDisplay
  * Method:    getHeight
- * Signature: ()J
+ * Signature: (J)J
  */
 JNIEXPORT jlong JNICALL Java_crossplatformapi_jni_display_NativeDisplay_getHeight
-  (JNIEnv *, jclass);
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     crossplatformapi_jni_display_NativeDisplay
+ * Method:    getWorkX
+ * Signature: (J)J
+ */
+JNIEXPORT jlong JNICALL Java_crossplatformapi_jni_display_NativeDisplay_getWorkX
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     crossplatformapi_jni_display_NativeDisplay
+ * Method:    getWorkY
+ * Signature: (J)J
+ */
+JNIEXPORT jlong JNICALL Java_crossplatformapi_jni_display_NativeDisplay_getWorkY
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     crossplatformapi_jni_display_NativeDisplay
+ * Method:    getWorkWidth
+ * Signature: (J)J
+ */
+JNIEXPORT jlong JNICALL Java_crossplatformapi_jni_display_NativeDisplay_getWorkWidth
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     crossplatformapi_jni_display_NativeDisplay
+ * Method:    getWorkHeight
+ * Signature: (J)J
+ */
+JNIEXPORT jlong JNICALL Java_crossplatformapi_jni_display_NativeDisplay_getWorkHeight
+  (JNIEnv *, jclass, jlong);
 
 #ifdef __cplusplus
 }

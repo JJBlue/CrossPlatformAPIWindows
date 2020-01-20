@@ -75,6 +75,9 @@
     <ClInclude Include="crossplatformapi_jni_display_NativeDisplay.h">
       <Filter>Headerdateien\jni</Filter>
     </ClInclude>
+    <ClInclude Include="monitors.h">
+      <Filter>Headerdateien\windows</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -124,6 +127,9 @@
     </ClCompile>
     <ClCompile Include="monitors.cpp">
       <Filter>Quelldateien\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="jni_monitors.cpp">
+      <Filter>Quelldateien\jni</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

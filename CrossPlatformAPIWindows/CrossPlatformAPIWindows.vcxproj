@@ -167,6 +167,7 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="keyboard.h" />
     <ClInclude Include="keyboardListener.h" />
+    <ClInclude Include="monitors.h" />
     <ClInclude Include="mouse.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="window.h" />
@@ -176,6 +177,7 @@
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="jni_keyboard.cpp" />
     <ClCompile Include="jni_keyboardListener.cpp" />
+    <ClCompile Include="jni_monitors.cpp" />
     <ClCompile Include="jni_mouse.cpp" />
     <ClCompile Include="jni_window.cpp" />
     <ClCompile Include="jni_windowListener.cpp" />
