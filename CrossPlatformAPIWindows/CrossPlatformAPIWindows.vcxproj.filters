@@ -72,6 +72,9 @@
     <ClInclude Include="windowListener.h">
       <Filter>Headerdateien\windows</Filter>
     </ClInclude>
+    <ClInclude Include="crossplatformapi_jni_display_NativeDisplay.h">
+      <Filter>Headerdateien\jni</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -118,6 +121,9 @@
     </ClCompile>
     <ClCompile Include="jni_windowListener.cpp">
       <Filter>Quelldateien\jni</Filter>
+    </ClCompile>
+    <ClCompile Include="monitors.cpp">
+      <Filter>Quelldateien\windows</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

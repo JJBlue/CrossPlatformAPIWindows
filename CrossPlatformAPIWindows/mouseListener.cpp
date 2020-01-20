@@ -4,7 +4,7 @@
 
 #include <windowsx.h>
 
-static bool hooking = false;
+static volatile bool hooking = false;
 static bool block = false;
 static HHOOK mouseHook;
 

@@ -7,6 +7,8 @@ long long hwndToLong(HWND hwnd);
 
 HWND longToHWND(long long id);
 
+bool isUserWindow(HWND hwnd);
+
 void getWindowTitle(HWND hwnd, std::wstring*);
 
 HWND getFocusWindow();

@@ -19,7 +19,7 @@ static bool isTaskbar(HWND hwnd) {
 	return GetWindowLong(hwnd, GWL_EXSTYLE) & WS_EX_APPWINDOW;
 }
 
-static bool isAltTabWindow(HWND hwnd) {
+bool isUserWindow(HWND hwnd) {
 	if (hwnd == NULL)
 		return FALSE;
 
@@ -61,7 +61,7 @@ HWND getFocusWindow() {
 static BOOL CALLBACK userWindows(HWND hwnd, LPARAM lParam) {
 	if (hwnd == NULL) return TRUE;
 
-	if (isAltTabWindow(hwnd)) {
+	if (isUserWindow(hwnd)) {
 		std::vector<HWND>* fwc = (std::vector<HWND>*) lParam;
 		fwc->push_back(hwnd);
 	}

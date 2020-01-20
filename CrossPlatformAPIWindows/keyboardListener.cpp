@@ -3,7 +3,7 @@
 #include "jni.h"
 #include "keyboardListener.h"
 
-static bool hooking = false;
+static volatile bool hooking = false;
 static bool block = false;
 static HHOOK keyboardHook;
 
@@ -52,11 +52,16 @@ static LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam) {
 	return block ? 1 : value;
 }
 
-void startKeyHooking() {
-	setKeyHooking(true);
+void startKeyHooking(JNIEnv* env) {
+	if (hooking || keyboardHook != NULL) return;
 
-	if (keyboardHook != NULL)
-		return;
+	hooking = true;
+
+	envi = env;
+	keyboardReceiverClass = envi->FindClass("crossplatformapi/main/keyboard/KeyEventReceiver");
+	m_keyPress = envi->GetStaticMethodID(keyboardReceiverClass, "press", "(JJ)V");
+	m_keyRelease = envi->GetStaticMethodID(keyboardReceiverClass, "release", "(JJ)V");
+	m_keyHotKey = envi->GetStaticMethodID(keyboardReceiverClass, "pressHotKey", "(I)V");
 
 	keyboardHook = SetWindowsHookEx(WH_KEYBOARD_LL, KeyboardProc, 0, 0);
 

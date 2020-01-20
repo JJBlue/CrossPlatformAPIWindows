@@ -4,13 +4,7 @@
 #include "keyboardListener.h"
 
 JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_KeyboardListener_registerListener(JNIEnv* env, jclass) {
-	envi = env;
-	keyboardReceiverClass = envi->FindClass("crossplatformapi/main/keyboard/KeyEventReceiver");
-	m_keyPress = envi->GetStaticMethodID(keyboardReceiverClass, "press", "(JJ)V");
-	m_keyRelease = envi->GetStaticMethodID(keyboardReceiverClass, "release", "(JJ)V");
-	m_keyHotKey = envi->GetStaticMethodID(keyboardReceiverClass, "pressHotKey", "(I)V");
-
-	startKeyHooking();
+	startKeyHooking(env);
 }
 
 JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_KeyboardListener_unregisterListener(JNIEnv*, jclass) {

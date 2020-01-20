@@ -155,6 +155,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="crossplatformapi_jni_display_NativeDisplay.h" />
     <ClInclude Include="crossplatformapi_jni_keyboard_KeyboardListener.h" />
     <ClInclude Include="crossplatformapi_jni_keyboard_NativeKeyboard.h" />
     <ClInclude Include="crossplatformapi_jni_mouse_MouseListener.h" />
@@ -180,6 +181,7 @@
     <ClCompile Include="jni_windowListener.cpp" />
     <ClCompile Include="keyboard.cpp" />
     <ClCompile Include="keyboardListener.cpp" />
+    <ClCompile Include="monitors.cpp" />
     <ClCompile Include="mouse.cpp" />
     <ClCompile Include="mouseListener.cpp" />
     <ClCompile Include="Network.cpp" />

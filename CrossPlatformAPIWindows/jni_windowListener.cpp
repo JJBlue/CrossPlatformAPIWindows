@@ -3,8 +3,11 @@
 #include "crossplatformapi_jni_window_WindowListener.h"
 #include "windowListener.h"
 
-JNIEXPORT void JNICALL Java_crossplatformapi_jni_window_WindowListener_registerListener(JNIEnv*, jclass) {
-    registerWindowListener();
+
+
+
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_window_WindowListener_registerListener(JNIEnv* env, jclass) {
+    registerWindowListener(env);
 }
 
 /*

@@ -1,5 +1,5 @@
 #pragma once
 
-void registerWindowListener();
+void registerWindowListener(JNIEnv*);
 
 void unregisterWindowListener();
