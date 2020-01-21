@@ -56,7 +56,6 @@ static void CALLBACK Wineventproc(HWINEVENTHOOK hook, DWORD event, HWND hwnd, LO
 
             switch (wp.showCmd) {
                 case SW_SHOWNORMAL: //restore, move and resize
-                    //std::cout << "EVENT_OBJECT_LOCATIONCHANGE " << "normal" << std::endl;
                     envi->CallStaticVoidMethod(clazz, restore, hwndToLong(hwnd));
                     envi->CallStaticVoidMethod(clazz, move, hwndToLong(hwnd));
                     envi->CallStaticVoidMethod(clazz, resize, hwndToLong(hwnd));

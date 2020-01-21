@@ -170,6 +170,7 @@
     <ClInclude Include="monitors.h" />
     <ClInclude Include="mouse.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="processes.h" />
     <ClInclude Include="window.h" />
     <ClInclude Include="windowListener.h" />
   </ItemGroup>
@@ -194,6 +195,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="PowerState.cpp" />
+    <ClCompile Include="processes.cpp" />
     <ClCompile Include="window.cpp" />
     <ClCompile Include="windowListener.cpp" />
   </ItemGroup>

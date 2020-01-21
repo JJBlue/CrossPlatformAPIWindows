@@ -78,6 +78,9 @@
     <ClInclude Include="monitors.h">
       <Filter>Headerdateien\windows</Filter>
     </ClInclude>
+    <ClInclude Include="processes.h">
+      <Filter>Headerdateien\windows</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -130,6 +133,9 @@
     </ClCompile>
     <ClCompile Include="jni_monitors.cpp">
       <Filter>Quelldateien\jni</Filter>
+    </ClCompile>
+    <ClCompile Include="processes.cpp">
+      <Filter>Quelldateien\windows</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
