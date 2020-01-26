@@ -2,7 +2,9 @@
 
 #include <vector>
 #include <highlevelmonitorconfigurationapi.h>
+
 //#include <iostream>
+//#include "error.h"
 
 #pragma comment(lib, "Dxva2.lib") //highlevelmonitorconfigurationapi.h
 
