@@ -2,6 +2,7 @@
 
 #include "crossplatformapi_jni_window_NativeWindow.h"
 #include "window.h"
+#include "jni_cpp_converter.h"
 
 #include <vector>
 
@@ -52,8 +53,7 @@ JNIEXPORT jstring JNICALL Java_crossplatformapi_jni_window_NativeWindow_getTitle
 	HWND hwnd = longToHWND(window);
 	std::wstring title;
 	getWindowTitle(hwnd, &title);
-	jstring s = env->NewString((const jchar*) title.c_str(), title.length());
-	return s;
+	return wstringToJString(title, env);
 }
 
 JNIEXPORT jlong JNICALL Java_crossplatformapi_jni_window_NativeWindow_getXPosition(JNIEnv*, jclass, jlong window) {

@@ -166,6 +166,7 @@
     <ClInclude Include="crossplatformapi_jni_window_WindowListener.h" />
     <ClInclude Include="error.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="jni_cpp_converter.h" />
     <ClInclude Include="keyboard.h" />
     <ClInclude Include="keyboardListener.h" />
     <ClInclude Include="monitors.h" />
@@ -178,6 +179,7 @@
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="error.cpp" />
+    <ClCompile Include="jni_cpp_converter.cpp" />
     <ClCompile Include="jni_keyboard.cpp" />
     <ClCompile Include="jni_keyboardListener.cpp" />
     <ClCompile Include="jni_monitors.cpp" />

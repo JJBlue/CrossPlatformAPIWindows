@@ -84,6 +84,9 @@
     <ClInclude Include="error.h">
       <Filter>Headerdateien\windows</Filter>
     </ClInclude>
+    <ClInclude Include="jni_cpp_converter.h">
+      <Filter>Headerdateien\windows</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -141,6 +144,9 @@
       <Filter>Quelldateien\windows</Filter>
     </ClCompile>
     <ClCompile Include="error.cpp">
+      <Filter>Quelldateien\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="jni_cpp_converter.cpp">
       <Filter>Quelldateien\windows</Filter>
     </ClCompile>
   </ItemGroup>
