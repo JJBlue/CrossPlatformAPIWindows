@@ -81,6 +81,9 @@
     <ClInclude Include="processes.h">
       <Filter>Headerdateien\windows</Filter>
     </ClInclude>
+    <ClInclude Include="error.h">
+      <Filter>Headerdateien\windows</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
