@@ -24,3 +24,11 @@ void getDesktopResolution(long long* width, long long* height);
 void getAllResolution(long long* width, long long* height);
 
 bool isPrimary(HMONITOR monitor);
+
+void setBrightness(HMONITOR monitor, DWORD brightness);
+
+long getBrightness(HMONITOR monitor);
+
+long getMinBrightness(HMONITOR monitor);
+
+long getMaxBrightness(HMONITOR monitor);

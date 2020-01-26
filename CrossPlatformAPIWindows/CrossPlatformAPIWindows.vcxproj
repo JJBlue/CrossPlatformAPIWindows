@@ -176,6 +176,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="error.cpp" />
     <ClCompile Include="jni_keyboard.cpp" />
     <ClCompile Include="jni_keyboardListener.cpp" />
     <ClCompile Include="jni_monitors.cpp" />

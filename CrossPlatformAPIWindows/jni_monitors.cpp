@@ -96,4 +96,22 @@ JNIEXPORT jlong JNICALL Java_crossplatformapi_jni_display_NativeDisplay_getWorkH
 	return value;
 }
 
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_display_NativeDisplay_setBrightness(JNIEnv*, jclass, jlong monitor, jlong brightness) {
+	HMONITOR hmonitor = longToMonitor(monitor);
+	setBrightness(hmonitor, brightness);
+}
 
+JNIEXPORT jlong JNICALL Java_crossplatformapi_jni_display_NativeDisplay_getBrightness(JNIEnv*, jclass, jlong monitor) {
+	HMONITOR hmonitor = longToMonitor(monitor);
+	return getBrightness(hmonitor);
+}
+
+JNIEXPORT jlong JNICALL Java_crossplatformapi_jni_display_NativeDisplay_getMinBrightness(JNIEnv*, jclass, jlong monitor) {
+	HMONITOR hmonitor = longToMonitor(monitor);
+	return getMinBrightness(hmonitor);
+}
+
+JNIEXPORT jlong JNICALL Java_crossplatformapi_jni_display_NativeDisplay_getMaxBrightness(JNIEnv*, jclass, jlong monitor) {
+	HMONITOR hmonitor = longToMonitor(monitor);
+	return getMaxBrightness(hmonitor);
+}
