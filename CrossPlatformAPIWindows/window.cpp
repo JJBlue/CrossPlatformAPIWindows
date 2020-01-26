@@ -158,12 +158,16 @@ LONG getWindowPositionBottom(HWND hwnd) {
 	return rc.bottom + info.cyWindowBorders;
 }
 
+#include "error.h"
+
 void windowToFront(HWND hwnd) {
-	SetWindowPos(hwnd, HWND_TOP, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE);
+	//SetWindowPos(hwnd, HWND_TOP, 0, 0, 0, 0, SWP_SHOWWINDOW | SWP_NOSIZE | SWP_NOMOVE);
+	//AllowSetForegroundWindow(ASFW_ANY)
+	SetForegroundWindow(hwnd);
 }
 
 void windowToBack(HWND hwnd) {
-	SetWindowPos(hwnd, HWND_BOTTOM, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE);
+	SetWindowPos(hwnd, HWND_BOTTOM, 0, 0, 0, 0, SWP_NOACTIVATE | SWP_NOSIZE | SWP_NOMOVE);
 }
 
 void setTopMost(HWND hwnd, bool value) {

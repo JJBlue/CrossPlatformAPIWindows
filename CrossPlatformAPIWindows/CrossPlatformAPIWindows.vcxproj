@@ -177,6 +177,7 @@
     <ClInclude Include="windowListener.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="battery.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="error.cpp" />
     <ClCompile Include="jni_cpp_converter.cpp" />
