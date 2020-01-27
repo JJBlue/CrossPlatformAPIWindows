@@ -158,8 +158,6 @@ LONG getWindowPositionBottom(HWND hwnd) {
 	return rc.bottom + info.cyWindowBorders;
 }
 
-#include "error.h"
-
 void windowToFront(HWND hwnd) {
 	//SetWindowPos(hwnd, HWND_TOP, 0, 0, 0, 0, SWP_SHOWWINDOW | SWP_NOSIZE | SWP_NOMOVE);
 	//AllowSetForegroundWindow(ASFW_ANY)

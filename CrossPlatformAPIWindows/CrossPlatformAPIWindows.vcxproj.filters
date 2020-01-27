@@ -81,10 +81,25 @@
     <ClInclude Include="processes.h">
       <Filter>Headerdateien\windows</Filter>
     </ClInclude>
-    <ClInclude Include="error.h">
+    <ClInclude Include="jni_cpp_converter.h">
       <Filter>Headerdateien\windows</Filter>
     </ClInclude>
-    <ClInclude Include="jni_cpp_converter.h">
+    <ClInclude Include="crossplatformapi_jni_battery_NativeBattery.h">
+      <Filter>Headerdateien\jni</Filter>
+    </ClInclude>
+    <ClInclude Include="battery.h">
+      <Filter>Headerdateien\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="helper.h">
+      <Filter>Headerdateien\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="crossplatformapi_jni_debug_NativeDebug.h">
+      <Filter>Headerdateien\jni</Filter>
+    </ClInclude>
+    <ClInclude Include="crossplatformapi_jni_battery_BatteryListener.h">
+      <Filter>Headerdateien\jni</Filter>
+    </ClInclude>
+    <ClInclude Include="batteryListener.h">
       <Filter>Headerdateien\windows</Filter>
     </ClInclude>
   </ItemGroup>
@@ -143,14 +158,26 @@
     <ClCompile Include="processes.cpp">
       <Filter>Quelldateien\windows</Filter>
     </ClCompile>
-    <ClCompile Include="error.cpp">
-      <Filter>Quelldateien\windows</Filter>
-    </ClCompile>
     <ClCompile Include="jni_cpp_converter.cpp">
       <Filter>Quelldateien\windows</Filter>
     </ClCompile>
     <ClCompile Include="battery.cpp">
       <Filter>Quelldateien\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="jni_battery.cpp">
+      <Filter>Quelldateien\jni</Filter>
+    </ClCompile>
+    <ClCompile Include="helper.cpp">
+      <Filter>Quelldateien\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="jni_debug.cpp">
+      <Filter>Quelldateien\jni</Filter>
+    </ClCompile>
+    <ClCompile Include="batteryListener.cpp">
+      <Filter>Quelldateien\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="jni_batteryListener.cpp">
+      <Filter>Quelldateien\jni</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

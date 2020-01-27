@@ -115,3 +115,11 @@ JNIEXPORT jlong JNICALL Java_crossplatformapi_jni_display_NativeDisplay_getMaxBr
 	HMONITOR hmonitor = longToMonitor(monitor);
 	return getMaxBrightness(hmonitor);
 }
+
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_display_NativeDisplay_turnOffMonitors(JNIEnv*, jclass) {
+	turnOffMonitors();
+}
+
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_display_NativeDisplay_turnOnMonitors(JNIEnv*, jclass) {
+	turnOnMonitors();
+}

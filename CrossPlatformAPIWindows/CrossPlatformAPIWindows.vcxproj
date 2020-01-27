@@ -155,6 +155,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="battery.h" />
+    <ClInclude Include="batteryListener.h" />
+    <ClInclude Include="crossplatformapi_jni_battery_BatteryListener.h" />
+    <ClInclude Include="crossplatformapi_jni_battery_NativeBattery.h" />
+    <ClInclude Include="crossplatformapi_jni_debug_NativeDebug.h" />
     <ClInclude Include="crossplatformapi_jni_display_NativeDisplay.h" />
     <ClInclude Include="crossplatformapi_jni_keyboard_KeyboardListener.h" />
     <ClInclude Include="crossplatformapi_jni_keyboard_NativeKeyboard.h" />
@@ -164,7 +169,7 @@
     <ClInclude Include="crossplatformapi_jni_stats_PowerStates.h" />
     <ClInclude Include="crossplatformapi_jni_window_NativeWindow.h" />
     <ClInclude Include="crossplatformapi_jni_window_WindowListener.h" />
-    <ClInclude Include="error.h" />
+    <ClInclude Include="helper.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="jni_cpp_converter.h" />
     <ClInclude Include="keyboard.h" />
@@ -178,9 +183,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="battery.cpp" />
+    <ClCompile Include="batteryListener.cpp" />
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="error.cpp" />
+    <ClCompile Include="helper.cpp" />
+    <ClCompile Include="jni_battery.cpp" />
+    <ClCompile Include="jni_batteryListener.cpp" />
     <ClCompile Include="jni_cpp_converter.cpp" />
+    <ClCompile Include="jni_debug.cpp" />
     <ClCompile Include="jni_keyboard.cpp" />
     <ClCompile Include="jni_keyboardListener.cpp" />
     <ClCompile Include="jni_monitors.cpp" />

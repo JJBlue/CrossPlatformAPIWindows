@@ -114,7 +114,7 @@ JNIEXPORT jlong JNICALL Java_crossplatformapi_jni_display_NativeDisplay_getWorkH
 /*
  * Class:     crossplatformapi_jni_display_NativeDisplay
  * Method:    setBrightness
- * Signature: (J)J
+ * Signature: (JJ)V
  */
 JNIEXPORT void JNICALL Java_crossplatformapi_jni_display_NativeDisplay_setBrightness
   (JNIEnv *, jclass, jlong, jlong);
@@ -142,6 +142,22 @@ JNIEXPORT jlong JNICALL Java_crossplatformapi_jni_display_NativeDisplay_getMinBr
  */
 JNIEXPORT jlong JNICALL Java_crossplatformapi_jni_display_NativeDisplay_getMaxBrightness
   (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     crossplatformapi_jni_display_NativeDisplay
+ * Method:    turnOffMonitors
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_display_NativeDisplay_turnOffMonitors
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     crossplatformapi_jni_display_NativeDisplay
+ * Method:    turnOnMonitors
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_display_NativeDisplay_turnOnMonitors
+  (JNIEnv *, jclass);
 
 #ifdef __cplusplus
 }

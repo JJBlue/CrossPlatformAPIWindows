@@ -32,3 +32,7 @@ long getBrightness(HMONITOR monitor);
 long getMinBrightness(HMONITOR monitor);
 
 long getMaxBrightness(HMONITOR monitor);
+
+void turnOffMonitors();
+
+void turnOnMonitors();
