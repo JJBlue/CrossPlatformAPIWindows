@@ -157,18 +157,18 @@
   <ItemGroup>
     <ClInclude Include="battery.h" />
     <ClInclude Include="batteryListener.h" />
-    <ClInclude Include="crossplatformapi_jni_battery_BatteryListener.h" />
     <ClInclude Include="crossplatformapi_jni_battery_NativeBattery.h" />
+    <ClInclude Include="crossplatformapi_jni_battery_NativeBatteryListener.h" />
     <ClInclude Include="crossplatformapi_jni_debug_NativeDebug.h" />
     <ClInclude Include="crossplatformapi_jni_display_NativeDisplay.h" />
-    <ClInclude Include="crossplatformapi_jni_keyboard_KeyboardListener.h" />
     <ClInclude Include="crossplatformapi_jni_keyboard_NativeKeyboard.h" />
-    <ClInclude Include="crossplatformapi_jni_mouse_MouseListener.h" />
+    <ClInclude Include="crossplatformapi_jni_keyboard_NativeKeyboardListener.h" />
     <ClInclude Include="crossplatformapi_jni_mouse_NativeMouse.h" />
-    <ClInclude Include="crossplatformapi_jni_network_Network.h" />
-    <ClInclude Include="crossplatformapi_jni_stats_PowerStates.h" />
+    <ClInclude Include="crossplatformapi_jni_mouse_NativeMouseListener.h" />
+    <ClInclude Include="crossplatformapi_jni_network_NativeNetwork.h" />
+    <ClInclude Include="crossplatformapi_jni_stats_NativePowerStates.h" />
     <ClInclude Include="crossplatformapi_jni_window_NativeWindow.h" />
-    <ClInclude Include="crossplatformapi_jni_window_WindowListener.h" />
+    <ClInclude Include="crossplatformapi_jni_window_NativeWindowListener.h" />
     <ClInclude Include="helper.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="jni_cpp_converter.h" />

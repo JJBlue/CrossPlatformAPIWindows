@@ -33,24 +33,6 @@
     <ClInclude Include="pch.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="crossplatformapi_jni_keyboard_KeyboardListener.h">
-      <Filter>Headerdateien\jni</Filter>
-    </ClInclude>
-    <ClInclude Include="crossplatformapi_jni_keyboard_NativeKeyboard.h">
-      <Filter>Headerdateien\jni</Filter>
-    </ClInclude>
-    <ClInclude Include="crossplatformapi_jni_mouse_MouseListener.h">
-      <Filter>Headerdateien\jni</Filter>
-    </ClInclude>
-    <ClInclude Include="crossplatformapi_jni_mouse_NativeMouse.h">
-      <Filter>Headerdateien\jni</Filter>
-    </ClInclude>
-    <ClInclude Include="crossplatformapi_jni_network_Network.h">
-      <Filter>Headerdateien\jni</Filter>
-    </ClInclude>
-    <ClInclude Include="crossplatformapi_jni_stats_PowerStates.h">
-      <Filter>Headerdateien\jni</Filter>
-    </ClInclude>
     <ClInclude Include="window.h">
       <Filter>Headerdateien\windows</Filter>
     </ClInclude>
@@ -63,17 +45,8 @@
     <ClInclude Include="mouse.h">
       <Filter>Headerdateien\windows</Filter>
     </ClInclude>
-    <ClInclude Include="crossplatformapi_jni_window_NativeWindow.h">
-      <Filter>Headerdateien\jni</Filter>
-    </ClInclude>
-    <ClInclude Include="crossplatformapi_jni_window_WindowListener.h">
-      <Filter>Headerdateien\jni</Filter>
-    </ClInclude>
     <ClInclude Include="windowListener.h">
       <Filter>Headerdateien\windows</Filter>
-    </ClInclude>
-    <ClInclude Include="crossplatformapi_jni_display_NativeDisplay.h">
-      <Filter>Headerdateien\jni</Filter>
     </ClInclude>
     <ClInclude Include="monitors.h">
       <Filter>Headerdateien\windows</Filter>
@@ -84,26 +57,53 @@
     <ClInclude Include="jni_cpp_converter.h">
       <Filter>Headerdateien\windows</Filter>
     </ClInclude>
-    <ClInclude Include="crossplatformapi_jni_battery_NativeBattery.h">
-      <Filter>Headerdateien\jni</Filter>
-    </ClInclude>
     <ClInclude Include="battery.h">
       <Filter>Headerdateien\windows</Filter>
     </ClInclude>
     <ClInclude Include="helper.h">
       <Filter>Headerdateien\windows</Filter>
     </ClInclude>
-    <ClInclude Include="crossplatformapi_jni_debug_NativeDebug.h">
-      <Filter>Headerdateien\jni</Filter>
-    </ClInclude>
-    <ClInclude Include="crossplatformapi_jni_battery_BatteryListener.h">
-      <Filter>Headerdateien\jni</Filter>
-    </ClInclude>
     <ClInclude Include="batteryListener.h">
       <Filter>Headerdateien\windows</Filter>
     </ClInclude>
     <ClInclude Include="network.h">
       <Filter>Headerdateien\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="crossplatformapi_jni_keyboard_NativeKeyboardListener.h">
+      <Filter>Headerdateien\jni</Filter>
+    </ClInclude>
+    <ClInclude Include="crossplatformapi_jni_mouse_NativeMouse.h">
+      <Filter>Headerdateien\jni</Filter>
+    </ClInclude>
+    <ClInclude Include="crossplatformapi_jni_mouse_NativeMouseListener.h">
+      <Filter>Headerdateien\jni</Filter>
+    </ClInclude>
+    <ClInclude Include="crossplatformapi_jni_network_NativeNetwork.h">
+      <Filter>Headerdateien\jni</Filter>
+    </ClInclude>
+    <ClInclude Include="crossplatformapi_jni_stats_NativePowerStates.h">
+      <Filter>Headerdateien\jni</Filter>
+    </ClInclude>
+    <ClInclude Include="crossplatformapi_jni_window_NativeWindow.h">
+      <Filter>Headerdateien\jni</Filter>
+    </ClInclude>
+    <ClInclude Include="crossplatformapi_jni_window_NativeWindowListener.h">
+      <Filter>Headerdateien\jni</Filter>
+    </ClInclude>
+    <ClInclude Include="crossplatformapi_jni_battery_NativeBattery.h">
+      <Filter>Headerdateien\jni</Filter>
+    </ClInclude>
+    <ClInclude Include="crossplatformapi_jni_battery_NativeBatteryListener.h">
+      <Filter>Headerdateien\jni</Filter>
+    </ClInclude>
+    <ClInclude Include="crossplatformapi_jni_debug_NativeDebug.h">
+      <Filter>Headerdateien\jni</Filter>
+    </ClInclude>
+    <ClInclude Include="crossplatformapi_jni_display_NativeDisplay.h">
+      <Filter>Headerdateien\jni</Filter>
+    </ClInclude>
+    <ClInclude Include="crossplatformapi_jni_keyboard_NativeKeyboard.h">
+      <Filter>Headerdateien\jni</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

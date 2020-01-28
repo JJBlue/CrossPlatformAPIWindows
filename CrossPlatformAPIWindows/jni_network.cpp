@@ -1,15 +1,15 @@
 #include "pch.h"
 
-#include "crossplatformapi_jni_network_Network.h"
+#include "crossplatformapi_jni_network_NativeNetwork.h"
 #include "network.h"
 #include "helper.h"
 #include "jni_cpp_converter.h"
 
-JNIEXPORT jboolean JNICALL Java_crossplatformapi_jni_network_Network_isConnected(JNIEnv*, jclass) {
+JNIEXPORT jboolean JNICALL Java_crossplatformapi_jni_network_NativeNetwork_isConnected(JNIEnv*, jclass) {
 	return hasInternetAccess();
 }
 
-JNIEXPORT jobjectArray JNICALL Java_crossplatformapi_jni_network_Network_getConnectedSSIDs(JNIEnv* env, jclass) {
+JNIEXPORT jobjectArray JNICALL Java_crossplatformapi_jni_network_NativeNetwork_getConnectedSSIDs(JNIEnv* env, jclass) {
 	std::vector<std::wstring> connected;
 	getCurrentSSIDs(&connected, NULL);
 
@@ -24,7 +24,7 @@ JNIEXPORT jobjectArray JNICALL Java_crossplatformapi_jni_network_Network_getConn
 	return objectArray;
 }
 
-JNIEXPORT jobjectArray JNICALL Java_crossplatformapi_jni_network_Network_getAllSSIDs(JNIEnv* env, jclass) {
+JNIEXPORT jobjectArray JNICALL Java_crossplatformapi_jni_network_NativeNetwork_getAllSSIDs(JNIEnv* env, jclass) {
 	std::vector<std::wstring> ssids;
 	getCurrentSSIDs(NULL, &ssids);
 

@@ -1,6 +1,6 @@
 #include "pch.h"
 
-#include "crossplatformapi_jni_mouse_MouseListener.h"
+#include "crossplatformapi_jni_mouse_NativeMouseListener.h"
 
 #include <windowsx.h>
 
@@ -65,7 +65,7 @@ LRESULT CALLBACK mouseHookProc(int nCode, WPARAM wParam, LPARAM lParam) {
     return block ? 1 : value;
 }
 
-JNIEXPORT void JNICALL Java_crossplatformapi_jni_mouse_MouseListener_registerListener(JNIEnv* env, jclass){
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_mouse_NativeMouseListener_register(JNIEnv* env, jclass){
     hooking = true;
     envi = env;
     clazz = envi->FindClass("crossplatformapi/main/mouse/MouseEventReceiver");
@@ -88,14 +88,14 @@ JNIEXPORT void JNICALL Java_crossplatformapi_jni_mouse_MouseListener_registerLis
     mouseHook = NULL;
 }
 
-JNIEXPORT void JNICALL Java_crossplatformapi_jni_mouse_MouseListener_unregisterListener(JNIEnv*, jclass) {
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_mouse_NativeMouseListener_unregister(JNIEnv*, jclass) {
     hooking = false;
 }
 
-JNIEXPORT void JNICALL Java_crossplatformapi_jni_mouse_MouseListener_block(JNIEnv*, jclass) {
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_mouse_NativeMouseListener_block(JNIEnv*, jclass) {
     block = true;
 }
 
-JNIEXPORT void JNICALL Java_crossplatformapi_jni_mouse_MouseListener_unblock(JNIEnv*, jclass) {
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_mouse_NativeMouseListener_unblock(JNIEnv*, jclass) {
     block = false;
 }
