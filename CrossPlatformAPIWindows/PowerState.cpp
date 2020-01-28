@@ -10,7 +10,7 @@
 #pragma comment(lib, "PowrProf.lib")
 
 JNIEXPORT void JNICALL Java_crossplatformapi_jni_stats_NativePowerStates_modernStandby(JNIEnv*, jclass) {
-	
+	SetSuspendState(0, 1, 0);
 }
 
 JNIEXPORT void JNICALL Java_crossplatformapi_jni_stats_NativePowerStates_standby(JNIEnv*, jclass) {
