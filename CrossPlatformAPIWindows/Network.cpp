@@ -20,7 +20,7 @@
 #pragma comment(lib, "wlanapi.lib")
 #pragma comment(lib, "ole32.lib")
 
-void printInformation() {
+static void printInformation() {
     HANDLE hClient = NULL;
     DWORD dwMaxClient = 2;
     DWORD dwCurVersion = 0;
@@ -240,16 +240,14 @@ void printInformation() {
     }
 }
 
-void test(std::vector<std::string>* connectedSSID) {
+void getCurrentSSIDs(std::vector<std::wstring>* connectedSSID, std::vector<std::wstring>* SSIDs) {
+    if (connectedSSID == NULL && SSIDs == NULL)
+        return;
+
     HANDLE hClient = NULL;
     DWORD dwMaxClient = 2;
     DWORD dwCurVersion = 0;
     DWORD dwResult = 0;
-    int iRet = 0;
-
-    WCHAR GuidString[39] = { 0 };
-
-    unsigned int i, j, k;
 
     PWLAN_INTERFACE_INFO_LIST pIfList = NULL;
     PWLAN_INTERFACE_INFO pIfInfo = NULL;
@@ -257,80 +255,51 @@ void test(std::vector<std::string>* connectedSSID) {
     PWLAN_AVAILABLE_NETWORK_LIST pBssList = NULL;
     PWLAN_AVAILABLE_NETWORK pBssEntry = NULL;
 
-    int iRSSI = 0;
-
     dwResult = WlanOpenHandle(dwMaxClient, NULL, &dwCurVersion, &hClient);
     if (dwResult != ERROR_SUCCESS) {
-        print(L"WlanOpenHandle failed");
         return;
     }
 
     dwResult = WlanEnumInterfaces(hClient, NULL, &pIfList);
     if (dwResult != ERROR_SUCCESS) {
-        print(L"WlanEnumInterfaces failed");
         return;
     } else {
-        for (i = 0; i < (int)pIfList->dwNumberOfItems; i++) {
+        for (unsigned int i = 0; i < (int)pIfList->dwNumberOfItems; i++) {
             pIfInfo = (WLAN_INTERFACE_INFO*)&pIfList->InterfaceInfo[i];
-            printFormat(L"  Interface Index[%u]:\t %lu\n", i, i);
-            iRet = StringFromGUID2(pIfInfo->InterfaceGuid, (LPOLESTR)&GuidString, sizeof(GuidString) / sizeof(*GuidString));
-
-            if (iRet == 0) {
-                print(L"StringFromGUID2 failed\n");
-            } else {
-                printFormat(L"  InterfaceGUID[%d]: %ws\n", i, GuidString);
-            }
-
-            printFormat(L"  Interface Description[%d]: %ws", i, pIfInfo->strInterfaceDescription);
-            print(L"\n");
-            printFormat(L"  Interface State[%d]:\t ", i);
-
-            switch (pIfInfo->isState) {
-                case wlan_interface_state_connected:
-                    print(L"Connected\n");
-                    break;
-            }
-
-            print(L"\n");
 
             dwResult = WlanGetAvailableNetworkList(hClient, &pIfInfo->InterfaceGuid, 0, NULL, &pBssList);
 
-            if (dwResult != ERROR_SUCCESS) {
-                printFormat(L"WlanGetAvailableNetworkList failed with error: %u\n", dwResult);
-            } else {
-                print(L"WLAN_AVAILABLE_NETWORK_LIST for this interface\n");
-                printFormat(L"  Num Entries: %lu\n\n", pBssList->dwNumberOfItems);
+            switch (pIfInfo->isState) {
+                case wlan_interface_state_connected:
+                    break;
+                default:
+                    if (SSIDs == NULL)
+                        continue;
+            }
 
-                for (j = 0; j < pBssList->dwNumberOfItems; j++) {
+            if (dwResult != ERROR_SUCCESS) {
+                continue;
+            } else {
+                for (unsigned int j = 0; j < pBssList->dwNumberOfItems; j++) {
                     pBssEntry = (WLAN_AVAILABLE_NETWORK*)&pBssList->Network[j];
 
-                    printFormat(L"  SSID[%u]:\t\t ", j);
+                    std::wstring ssid;
 
                     if (pBssEntry->dot11Ssid.uSSIDLength == 0) {
-                        print(L"\n");
+                        continue;
                     } else {
-                        for (k = 0; k < pBssEntry->dot11Ssid.uSSIDLength; k++) {
-                            printFormat(L"%c", (int)pBssEntry->dot11Ssid.ucSSID[k]);
+                        for (unsigned int k = 0; k < pBssEntry->dot11Ssid.uSSIDLength; k++) {
+                            ssid.push_back((int)pBssEntry->dot11Ssid.ucSSID[k]);
                         }
-                        print(L"\n");
                     }
 
-                    if (pBssEntry->wlanSignalQuality == 0)
-                        iRSSI = -100;
-                    else if (pBssEntry->wlanSignalQuality == 100)
-                        iRSSI = -50;
-                    else
-                        iRSSI = -100 + (pBssEntry->wlanSignalQuality / 2);
-
-                    printFormat(L"  Signal Quality[%u]:\t %u (RSSI: %i dBm)\n", j, pBssEntry->wlanSignalQuality, iRSSI);
-                    printFormat(L"  Flags[%u]:\t 0x%x", j, pBssEntry->dwFlags);
-
-                    if (pBssEntry->dwFlags) {
-                        if (pBssEntry->dwFlags & WLAN_AVAILABLE_NETWORK_CONNECTED)
-                            print(L" - Currently connected");
+                    if (SSIDs != NULL) {
+                        SSIDs->push_back(ssid);
                     }
 
-                    print(L"\n\n");
+                    if (connectedSSID != NULL && pBssEntry->dwFlags && pBssEntry->dwFlags & WLAN_AVAILABLE_NETWORK_CONNECTED) {
+                        connectedSSID->push_back(ssid);
+                    }
                 }
             }
         }

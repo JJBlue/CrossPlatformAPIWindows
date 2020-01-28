@@ -9,14 +9,6 @@ extern "C" {
 #endif
 /*
  * Class:     crossplatformapi_jni_battery_NativeBattery
- * Method:    test
- * Signature: ()V
- */
-JNIEXPORT void JNICALL Java_crossplatformapi_jni_battery_NativeBattery_test
-  (JNIEnv *, jclass);
-
-/*
- * Class:     crossplatformapi_jni_battery_NativeBattery
  * Method:    getCapacityInPercent
  * Signature: ()J
  */

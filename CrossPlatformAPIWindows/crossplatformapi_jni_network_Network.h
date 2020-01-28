@@ -15,6 +15,22 @@ extern "C" {
 JNIEXPORT jboolean JNICALL Java_crossplatformapi_jni_network_Network_isConnected
   (JNIEnv *, jclass);
 
+/*
+ * Class:     crossplatformapi_jni_network_Network
+ * Method:    getConnectedSSIDs
+ * Signature: ()[Ljava/lang/String;
+ */
+JNIEXPORT jobjectArray JNICALL Java_crossplatformapi_jni_network_Network_getConnectedSSIDs
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     crossplatformapi_jni_network_Network
+ * Method:    getAllSSIDs
+ * Signature: ()[Ljava/lang/String;
+ */
+JNIEXPORT jobjectArray JNICALL Java_crossplatformapi_jni_network_Network_getAllSSIDs
+  (JNIEnv *, jclass);
+
 #ifdef __cplusplus
 }
 #endif
