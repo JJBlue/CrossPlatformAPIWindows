@@ -1,6 +1,7 @@
 #include "pch.h"
 
 #include <iostream>
+#include <sstream>
 #include <string>
 #include "helper.h"
 
@@ -9,7 +10,35 @@
 static bool printErrorOn = FALSE;
 static JNIEnv* env;
 
+void printFormat(const wchar_t* format, ...) {
+	size_t length = wcslen(format) + 1024;
+
+	va_list args;
+	va_start(args, format);
+
+	wchar_t *buff = new wchar_t[length];
+	_vsnwprintf_s(buff, length, length - 1, format, args);
+	va_end(args);
+
+	std::wstring buffAsStdStr = buff;
+
+	print(buffAsStdStr.c_str());
+	delete[] buff;
+}
+
 void print(jstring str) {
+	if (env == NULL)
+		return;
+
+	jclass syscls = env->FindClass("java/lang/System");
+	jfieldID fid = env->GetStaticFieldID(syscls, "out", "Ljava/io/PrintStream;");
+	jobject out = env->GetStaticObjectField(syscls, fid);
+	jclass pscls = env->FindClass("java/io/PrintStream");
+	jmethodID mid = env->GetMethodID(pscls, "print", "(Ljava/lang/String;)V");
+	env->CallVoidMethod(out, mid, str);
+}
+
+void println(jstring str) {
 	if (env == NULL)
 		return;
 
@@ -20,6 +49,7 @@ void print(jstring str) {
 	jmethodID mid = env->GetMethodID(pscls, "println", "(Ljava/lang/String;)V");
 	env->CallVoidMethod(out, mid, str);
 }
+
 
 void print(const char* buf) {
 	if (env == NULL) {

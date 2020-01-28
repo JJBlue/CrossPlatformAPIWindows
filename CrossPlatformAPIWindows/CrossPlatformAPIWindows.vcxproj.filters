@@ -102,6 +102,9 @@
     <ClInclude Include="batteryListener.h">
       <Filter>Headerdateien\windows</Filter>
     </ClInclude>
+    <ClInclude Include="network.h">
+      <Filter>Headerdateien\windows</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -140,9 +143,6 @@
     <ClCompile Include="mouseListener.cpp">
       <Filter>Quelldateien\jni</Filter>
     </ClCompile>
-    <ClCompile Include="Network.cpp">
-      <Filter>Quelldateien\jni</Filter>
-    </ClCompile>
     <ClCompile Include="windowListener.cpp">
       <Filter>Quelldateien\windows</Filter>
     </ClCompile>
@@ -178,6 +178,12 @@
     </ClCompile>
     <ClCompile Include="jni_batteryListener.cpp">
       <Filter>Quelldateien\jni</Filter>
+    </ClCompile>
+    <ClCompile Include="jni_network.cpp">
+      <Filter>Quelldateien\jni</Filter>
+    </ClCompile>
+    <ClCompile Include="network.cpp">
+      <Filter>Quelldateien\windows</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

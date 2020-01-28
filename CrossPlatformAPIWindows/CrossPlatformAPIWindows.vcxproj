@@ -176,6 +176,7 @@
     <ClInclude Include="keyboardListener.h" />
     <ClInclude Include="monitors.h" />
     <ClInclude Include="mouse.h" />
+    <ClInclude Include="network.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="processes.h" />
     <ClInclude Include="window.h" />
@@ -201,7 +202,8 @@
     <ClCompile Include="monitors.cpp" />
     <ClCompile Include="mouse.cpp" />
     <ClCompile Include="mouseListener.cpp" />
-    <ClCompile Include="Network.cpp" />
+    <ClCompile Include="jni_network.cpp" />
+    <ClCompile Include="network.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

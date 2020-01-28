@@ -4,34 +4,40 @@
 #include "jni.h"
 #include "helper.h"
 
-static HPOWERNOTIFY powerSchemeNotify, powerSourceNotify, batteryPowerNotify;
+#include <powersetting.h>
+#include <powrprof.h>
 
-static DWORD handlerFunctionEx(DWORD dwControl, DWORD dwEventType, LPVOID lpEventData, LPVOID lpContext) {
-    
+#include <iostream>
+
+static HPOWERNOTIFY powerNotify;
+
+static ULONG CALLBACK DeviceNotifyCallbackRoutine(PVOID context, ULONG type, PVOID setting) {
+	POWERBROADCAST_SETTING *powersetting = (POWERBROADCAST_SETTING*)setting;
+
+	std::cout << (DWORD)powersetting->DataLength << " " << (DWORD) powersetting->Data[0] << "\n" << std::endl;
+
+	//printFormat(L"Value: %i", powersetting->Data);
+
+	return 0;
 }
 
 void registerPowerListener(JNIEnv* env) {
-	if (powerSchemeNotify != NULL)
+	if (powerNotify != NULL)
 		return;
 
-	GUID guid;
+	DEVICE_NOTIFY_SUBSCRIBE_PARAMETERS recipient;
+	recipient.Callback = DeviceNotifyCallbackRoutine;
+	recipient.Context = NULL;
 
-	powerSchemeNotify = RegisterPowerSettingNotification(NULL, &GUID_POWERSCHEME_PERSONALITY, DEVICE_NOTIFY_SERVICE_HANDLE);
-	powerSourceNotify = RegisterPowerSettingNotification(NULL, &GUID_ACDC_POWER_SOURCE, DEVICE_NOTIFY_SERVICE_HANDLE);
-	batteryPowerNotify = RegisterPowerSettingNotification(NULL, &GUID_BATTERY_PERCENTAGE_REMAINING, DEVICE_NOTIFY_SERVICE_HANDLE);
-
-	if(powerSchemeNotify == NULL) {
-		printError();
+	if (PowerSettingRegisterNotification(&GUID_BATTERY_PERCENTAGE_REMAINING, DEVICE_NOTIFY_CALLBACK, &recipient, &powerNotify) != 0) {
+		print("Error");
 	}
 }
 
 void unregisterPowerListener(JNIEnv* env) {
-	if (powerSchemeNotify == NULL)
+	if (powerNotify == NULL)
 		return;
 
-	UnregisterPowerSettingNotification(powerSchemeNotify);
-	UnregisterPowerSettingNotification(powerSourceNotify);
-	UnregisterPowerSettingNotification(batteryPowerNotify);
-
-	powerSchemeNotify = NULL;
+	PowerSettingUnregisterNotification(powerNotify);
+	powerNotify = NULL;
 }
