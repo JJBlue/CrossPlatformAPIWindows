@@ -14,7 +14,3 @@ JNIEXPORT jboolean JNICALL Java_crossplatformapi_jni_battery_NativeBattery_isPow
 JNIEXPORT jboolean JNICALL Java_crossplatformapi_jni_battery_NativeBattery_isBatterySaverOn(JNIEnv*, jclass) {
 	return isBatterySaverOn();
 }
-
-JNIEXPORT void JNICALL Java_crossplatformapi_jni_battery_NativeBattery_setBatterySaverOn(JNIEnv*, jclass, jboolean) {
-
-}
