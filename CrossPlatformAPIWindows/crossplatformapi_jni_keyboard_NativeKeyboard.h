@@ -33,18 +33,18 @@ JNIEXPORT jboolean JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_isK
 
 /*
  * Class:     crossplatformapi_jni_keyboard_NativeKeyboard
- * Method:    pressKey
+ * Method:    press
  * Signature: (I)V
  */
-JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_pressKey
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_press
   (JNIEnv *, jclass, jint);
 
 /*
  * Class:     crossplatformapi_jni_keyboard_NativeKeyboard
- * Method:    releaseKey
+ * Method:    release
  * Signature: (I)V
  */
-JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_releaseKey
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_release
   (JNIEnv *, jclass, jint);
 
 /*
@@ -54,6 +54,22 @@ JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_release
  */
 JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_write
   (JNIEnv *, jclass, jstring);
+
+/*
+ * Class:     crossplatformapi_jni_keyboard_NativeKeyboard
+ * Method:    press2
+ * Signature: (I)V
+ */
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_press2
+  (JNIEnv *, jclass, jint);
+
+/*
+ * Class:     crossplatformapi_jni_keyboard_NativeKeyboard
+ * Method:    release2
+ * Signature: (I)V
+ */
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_release2
+  (JNIEnv *, jclass, jint);
 
 /*
  * Class:     crossplatformapi_jni_keyboard_NativeKeyboard

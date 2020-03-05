@@ -90,7 +90,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;CROSSPLATFORMAPIWINDOWS_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>C:\Program Files\AdoptOpenJDK\jdk-13.0.1.9-hotspot\include\win32;C:\Program Files\AdoptOpenJDK\jdk-13.0.1.9-hotspot\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files\AdoptOpenJDK\jdk-13.0.2.8-hotspot\include\win32;C:\Program Files\AdoptOpenJDK\jdk-13.0.2.8-hotspot\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -106,7 +106,7 @@
       <PreprocessorDefinitions>_DEBUG;CROSSPLATFORMAPIWINDOWS_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>C:\Program Files\AdoptOpenJDK\jdk-13.0.1.9-hotspot\include\win32;C:\Program Files\AdoptOpenJDK\jdk-13.0.1.9-hotspot\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files\AdoptOpenJDK\jdk-13.0.2.8-hotspot\include\win32;C:\Program Files\AdoptOpenJDK\jdk-13.0.2.8-hotspot\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -124,7 +124,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;CROSSPLATFORMAPIWINDOWS_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>C:\Program Files\AdoptOpenJDK\jdk-13.0.1.9-hotspot\include\win32;C:\Program Files\AdoptOpenJDK\jdk-13.0.1.9-hotspot\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files\AdoptOpenJDK\jdk-13.0.2.8-hotspot\include\win32;C:\Program Files\AdoptOpenJDK\jdk-13.0.2.8-hotspot\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -144,7 +144,7 @@
       <PreprocessorDefinitions>NDEBUG;CROSSPLATFORMAPIWINDOWS_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>C:\Program Files\AdoptOpenJDK\jdk-13.0.1.9-hotspot\include\win32;C:\Program Files\AdoptOpenJDK\jdk-13.0.1.9-hotspot\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files\AdoptOpenJDK\jdk-13.0.2.8-hotspot\include\win32;C:\Program Files\AdoptOpenJDK\jdk-13.0.2.8-hotspot\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

@@ -15,12 +15,12 @@ JNIEXPORT jboolean JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_isK
 	return isKeyPressed(key);
 }
 
-JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_pressKey(JNIEnv*, jclass, jint key) {
-	pressKey(key);
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_press(JNIEnv*, jclass, jint key) {
+	pressScanKey(key);
 }
 
-JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_releaseKey(JNIEnv*, jclass, jint key) {
-	releaseKey(key);
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_release(JNIEnv*, jclass, jint key) {
+	releaseScanKey(key);
 }
 
 JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_write(JNIEnv* env, jclass, jstring text) {
@@ -32,6 +32,14 @@ JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_write(J
 	if (isCopy == JNI_TRUE) {
 		env->ReleaseStringChars(text, (const jchar*) nativeString);
 	}
+}
+
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_press2(JNIEnv*, jclass, jint key) {
+	pressKey(key);
+}
+
+JNIEXPORT void JNICALL Java_crossplatformapi_jni_keyboard_NativeKeyboard_release2(JNIEnv*, jclass, jint key) {
+	releaseKey(key);
 }
 
 #include <iostream>
